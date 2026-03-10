@@ -1,0 +1,802 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Roman Mironichev — Portfolio</title>
+  <meta name="description" content="Senior Technical Program Manager / Head of PMO portfolio landing page." />
+  <style>
+    :root {
+      --bg: #020617;
+      --bg-soft: #0f172a;
+      --bg-card: rgba(15, 23, 42, 0.72);
+      --bg-chip: rgba(2, 6, 23, 0.75);
+      --line: #1e293b;
+      --line-strong: rgba(52, 211, 153, 0.3);
+      --text: #e2e8f0;
+      --muted: #94a3b8;
+      --accent: #34d399;
+      --accent-dark: #022c22;
+      --white: #f8fafc;
+      --shadow: 0 20px 50px rgba(0, 0, 0, 0.28);
+      --radius: 28px;
+      --radius-sm: 18px;
+      --max: 1200px;
+    }
+
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      background: linear-gradient(180deg, #020617 0%, #0b1120 38%, #020617 100%);
+      color: var(--text);
+      line-height: 1.55;
+    }
+
+    a { color: inherit; text-decoration: none; }
+    img { max-width: 100%; display: block; }
+
+    .container {
+      width: min(var(--max), calc(100% - 32px));
+      margin: 0 auto;
+    }
+
+    .section { padding: 56px 0; }
+    .hero { padding: 72px 0 64px; border-bottom: 1px solid var(--line); }
+    .hero-grid,
+    .two-col,
+    .project-grid,
+    .contact-grid,
+    .split-grid {
+      display: grid;
+      gap: 24px;
+    }
+
+    .hero-grid { grid-template-columns: 1.35fr 0.75fr; align-items: end; }
+    .two-col { grid-template-columns: 0.9fr 1.1fr; align-items: start; }
+    .split-grid { grid-template-columns: 1fr 1fr; }
+    .contact-grid { grid-template-columns: 1fr 0.9fr; align-items: center; }
+    .project-grid { grid-template-columns: 1fr 240px; }
+
+    .pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      border: 1px solid var(--line-strong);
+      background: rgba(52, 211, 153, 0.1);
+      color: #86efac;
+      padding: 8px 14px;
+      border-radius: 999px;
+      font-size: 14px;
+      margin-bottom: 16px;
+    }
+
+    h1, h2, h3 { margin: 0; color: var(--white); letter-spacing: -0.03em; }
+    h1 { font-size: clamp(42px, 7vw, 72px); line-height: 0.98; }
+    h2 { font-size: clamp(28px, 3.2vw, 38px); line-height: 1.05; }
+    h3 { font-size: clamp(22px, 2.5vw, 30px); line-height: 1.1; }
+
+    .subtitle {
+      font-size: clamp(22px, 2.6vw, 34px);
+      color: #cbd5e1;
+      margin-top: 14px;
+    }
+
+    .lead {
+      margin-top: 22px;
+      max-width: 780px;
+      color: #cbd5e1;
+      font-size: 18px;
+      line-height: 1.72;
+    }
+
+    .actions { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 28px; }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 14px 20px;
+      border-radius: 18px;
+      font-size: 14px;
+      font-weight: 600;
+      transition: transform 0.18s ease, background 0.18s ease, border-color 0.18s ease;
+    }
+
+    .btn-primary {
+      background: var(--accent);
+      color: var(--accent-dark);
+      box-shadow: 0 10px 24px rgba(52, 211, 153, 0.22);
+    }
+
+    .btn-secondary {
+      border: 1px solid #334155;
+      color: var(--white);
+      background: transparent;
+    }
+
+    .btn:hover { transform: translateY(-1px); }
+    .btn-secondary:hover { border-color: #64748b; background: rgba(15, 23, 42, 0.65); }
+
+    .card, .stat, .link-card, .tag, .metric, .project-card {
+      border: 1px solid var(--line);
+      background: var(--bg-card);
+      box-shadow: var(--shadow);
+      backdrop-filter: blur(8px);
+    }
+
+    .card {
+      border-radius: 32px;
+      padding: 28px;
+    }
+
+    .card-emerald { border-color: var(--line-strong); }
+
+    .quick-grid,
+    .stats-grid,
+    .feature-grid,
+    .mini-grid,
+    .contact-list,
+    .links-col,
+    .chip-wrap {
+      display: grid;
+      gap: 12px;
+    }
+
+    .stats-grid { grid-template-columns: repeat(2, 1fr); }
+    .feature-grid { grid-template-columns: repeat(2, 1fr); }
+    .chip-wrap { grid-template-columns: repeat(auto-fit, minmax(160px, max-content)); gap: 10px; }
+
+    .eyebrow {
+      font-size: 12px;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-bottom: 14px;
+    }
+
+    .stat {
+      border-radius: 18px;
+      padding: 18px;
+      background: rgba(2, 6, 23, 0.6);
+    }
+
+    .stat-value {
+      font-size: 34px;
+      font-weight: 700;
+      color: var(--white);
+    }
+
+    .stat-label, .muted, .text-muted {
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    .feature, .metric, .link-card {
+      border-radius: 18px;
+      padding: 16px;
+      background: rgba(2, 6, 23, 0.6);
+      color: var(--text);
+      font-size: 14px;
+      line-height: 1.65;
+    }
+
+    .section-copy {
+      color: #cbd5e1;
+      margin-top: 14px;
+      font-size: 17px;
+      line-height: 1.72;
+      max-width: 720px;
+    }
+
+    .project-list { display: grid; gap: 24px; margin-top: 18px; }
+
+    .project-card {
+      border-radius: var(--radius);
+      padding: 24px;
+      background: rgba(15, 23, 42, 0.62);
+    }
+
+    .project-head {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      align-items: center;
+    }
+
+    .period {
+      border: 1px solid #334155;
+      border-radius: 999px;
+      padding: 6px 12px;
+      font-size: 12px;
+      color: var(--muted);
+    }
+
+    .project-meta {
+      margin-top: 10px;
+      font-size: 14px;
+      color: var(--muted);
+    }
+
+    .project-summary {
+      margin-top: 16px;
+      color: #cbd5e1;
+      font-size: 16px;
+      line-height: 1.72;
+    }
+
+    .bullets {
+      list-style: none;
+      padding: 0;
+      margin: 20px 0 0;
+      display: grid;
+      gap: 12px;
+    }
+
+    .bullets li {
+      display: grid;
+      grid-template-columns: 12px 1fr;
+      gap: 12px;
+      align-items: start;
+      color: var(--text);
+      font-size: 14px;
+      line-height: 1.7;
+    }
+
+    .dot {
+      width: 8px;
+      height: 8px;
+      margin-top: 8px;
+      border-radius: 999px;
+      background: var(--accent);
+    }
+
+    .tag {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 8px 12px;
+      border-radius: 999px;
+      background: var(--bg-chip);
+      font-size: 12px;
+      color: #cbd5e1;
+      box-shadow: none;
+    }
+
+    .links-side {
+      border-radius: 18px;
+      border: 1px solid var(--line);
+      background: rgba(2, 6, 23, 0.72);
+      padding: 16px;
+      height: fit-content;
+    }
+
+    .links-side .eyebrow { margin-bottom: 10px; }
+
+    .link-card:hover {
+      border-color: rgba(52, 211, 153, 0.4);
+      background: rgba(15, 23, 42, 0.82);
+    }
+
+    .contact-list { margin-top: 0; }
+
+    .contact-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      border-radius: 18px;
+      border: 1px solid var(--line);
+      padding: 14px 16px;
+      background: rgba(15, 23, 42, 0.72);
+      transition: border-color 0.18s ease, background 0.18s ease;
+    }
+
+    .contact-row:hover {
+      border-color: rgba(52, 211, 153, 0.4);
+      background: rgba(2, 6, 23, 0.82);
+    }
+
+    .contact-label {
+      font-size: 14px;
+      color: var(--muted);
+    }
+
+    .contact-value {
+      font-size: 14px;
+      font-weight: 600;
+      color: var(--white);
+      text-align: right;
+    }
+
+    .footer-line { border-top: 1px solid var(--line); }
+
+    @media (max-width: 1024px) {
+      .hero-grid,
+      .two-col,
+      .contact-grid,
+      .project-grid,
+      .split-grid { grid-template-columns: 1fr; }
+      .feature-grid, .stats-grid { grid-template-columns: 1fr 1fr; }
+    }
+
+    @media (max-width: 720px) {
+      .section, .hero { padding: 40px 0; }
+      .container { width: min(var(--max), calc(100% - 20px)); }
+      .card, .project-card { padding: 20px; border-radius: 24px; }
+      .feature-grid, .stats-grid { grid-template-columns: 1fr; }
+      .subtitle { font-size: 20px; }
+      .lead, .section-copy, .project-summary { font-size: 15px; }
+      .project-head { align-items: flex-start; }
+    }
+  </style>
+</head>
+<body>
+  <header class="hero">
+    <div class="container">
+      <div class="hero-grid">
+        <div>
+          <div class="pill">Remote • Based in Russia / Armenia • Available for international teams</div>
+          <h1>Roman Mironichev</h1>
+          <div class="subtitle">Senior Technical Program Manager • Head of PMO • Product & Startup Delivery</div>
+          <p class="lead">
+            Senior delivery leader focused on fixing complex product execution environments and turning fragmented teams into predictable delivery systems. 15+ years working across fintech payments, crypto platforms, gaming ecosystems and high-load digital products. Known for recovering broken delivery processes, structuring cross-team execution, and shipping complex platforms used by millions of users.
+          </p>
+          <div class="actions">
+            <a class="btn btn-primary" href="#projects">View Projects</a>
+            <a class="btn btn-secondary" href="#contact">Contact</a>
+          </div>
+        </div>
+        <aside class="card">
+          <div class="eyebrow">Quick facts</div>
+          <div class="stats-grid">
+            <div class="stat">
+              <div class="stat-value">15+</div>
+              <div class="stat-label">years in digital project delivery</div>
+            </div>
+            <div class="stat">
+              <div class="stat-value">60</div>
+              <div class="stat-label">people in largest managed teams</div>
+            </div>
+            <div class="stat">
+              <div class="stat-value">100M</div>
+              <div class="stat-label">transactions daily in high-load payments system</div>
+            </div>
+            <div class="stat">
+              <div class="stat-value">10+</div>
+              <div class="stat-label">full-cycle game projects delivered in one studio</div>
+            </div>
+          </div>
+        </aside>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <section class="section">
+      <div class="container">
+        <div class="card card-emerald">
+          <div class="split-grid">
+            <div>
+              <h2>Recruiter Quick Overview</h2>
+              <p class="section-copy">
+                Delivery-focused Technical Program Manager with experience stabilizing complex products and coordinating large distributed engineering teams.
+              </p>
+            </div>
+            <div class="quick-grid">
+              <div class="feature">100M daily transactions payment platform</div>
+              <div class="feature">40M users transport payment ecosystem</div>
+              <div class="feature">$5M yearly game development portfolio</div>
+              <div class="feature">300K crypto wallet users • $10M monthly transactions</div>
+              <div class="feature">Teams up to 250 contributors across internal and external teams</div>
+              <div class="feature">14 production releases in one year • 10 game launches in 14 months</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" style="padding-top:0;">
+      <div class="container">
+        <div class="card">
+          <div class="split-grid">
+            <div>
+              <h2>AI Productivity Stack</h2>
+              <p class="section-copy">
+                Active practitioner using modern LLM systems for product research, prototyping and engineering productivity.
+              </p>
+            </div>
+            <div class="quick-grid">
+              <div class="feature">Claude, ChatGPT and Gemini for research, requirements and market analysis</div>
+              <div class="feature">Rapid prototyping of landing pages, tools and product concepts</div>
+              <div class="feature">Automation scripts, analytics exploration and engineering support</div>
+              <div class="feature">Builder of experimental tools including a YouTube transcript summarizer</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" style="padding-top:0;">
+      <div class="container">
+        <div class="two-col">
+          <div>
+            <h2>What I do</h2>
+            <p class="section-copy">
+              I work at the intersection of product execution, technical delivery and business structure. This page is designed as a practical portfolio for PM, TPM and Head of PMO roles.
+            </p>
+          </div>
+          <div class="feature-grid">
+            <div class="feature">Fixing broken delivery and restoring release predictability</div>
+            <div class="feature">Structuring chaotic organizations into working delivery systems</div>
+            <div class="feature">Technical program and project management</div>
+            <div class="feature">PMO setup and portfolio governance</div>
+            <div class="feature">Product launch from idea to production</div>
+            <div class="feature">Cross-functional team leadership</div>
+            <div class="feature">Fintech, payments, crypto and blockchain products</div>
+            <div class="feature">Gamedev production and release management</div>
+            <div class="feature">Mobile and high-load platform delivery</div>
+            <div class="feature">Agile operations, OKR, backlog and release planning</div>
+            <div class="feature">AI-assisted product development using Claude, ChatGPT and Gemini</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" style="padding-top:0;">
+      <div class="container">
+        <div class="card" style="margin-bottom:24px;">
+          <div class="split-grid">
+            <div>
+              <h2>Commercial & Growth Background</h2>
+              <p class="section-copy">
+                Early career built in digital sales, marketing and product commercialization. This experience allows me to connect product development with real revenue outcomes and business growth.
+              </p>
+            </div>
+            <div class="quick-grid">
+              <div class="feature">5+ years selling digital products, advertising and custom technology solutions (B2B and B2C)</div>
+              <div class="feature">Hands-on experience with digital marketing: landing pages, traffic growth, paid acquisition and analytics</div>
+              <div class="feature">Worked on branding, design systems, websites and mobile product launches</div>
+              <div class="feature">Ability to translate product ideas into commercial outcomes and measurable growth</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="card">
+          <div class="split-grid">
+            <div>
+              <h2>Large-Scale Program Leadership</h2>
+            </div>
+            <div class="quick-grid">
+              <div class="feature">Experience coordinating programs involving up to 250 contributors across internal teams and external vendors</div>
+              <div class="feature">Managed portfolios containing 10+ parallel development initiatives</div>
+              <div class="feature">Maintained delivery variance within ~3–5% from planned timelines across long product cycles</div>
+              <div class="feature">Deep ability to rapidly understand complex systems and stabilize execution</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="projects" class="section" style="padding-top:16px;">
+      <div class="container">
+        <div>
+          <h2>Selected projects</h2>
+          <p class="section-copy" style="margin-top:10px;">Detailed project cases for remote international opportunities.</p>
+        </div>
+
+        <div class="project-list">
+          <article class="project-card">
+            <div class="project-grid">
+              <div>
+                <div class="project-head">
+                  <h3>Transport Payment Processing Platform</h3>
+                  <span class="period">2024–2025</span>
+                </div>
+                <div class="project-meta">Project Manager • Sberbank Group / AO ‘Rasschetnye Resheniya’ • Fintech / Payments / High-load systems</div>
+                <p class="project-summary">
+                  Led delivery of a transport payment processing and pre-processing platform used across large urban transport networks. The system processes payments from terminals and online channels and operates as part of a multi-system ecosystem involving banks, transport operators and regulatory requirements.
+                </p>
+                <ul class="bullets">
+                  <li><span class="dot"></span><span>Platform scale: ~100M payment transactions per day across terminals and online channels.</span></li>
+                  <li><span class="dot"></span><span>Transport ecosystem serving ~40M users.</span></li>
+                  <li><span class="dot"></span><span>Coordinated delivery across ~12 teams working with 10–15 interconnected internal systems and ~10 external partner systems.</span></li>
+                  <li><span class="dot"></span><span>Improved delivery performance from 20% to 70% of releases delivered within committed timelines.</span></li>
+                  <li><span class="dot"></span><span>Delivered 14 production releases during project cycle.</span></li>
+                  <li><span class="dot"></span><span>Launched 10+ product features improving payment speed and passenger experience.</span></li>
+                  <li><span class="dot"></span><span>Managed full lifecycle delivery from business request to production release with a 40+ person engineering team.</span></li>
+                  <li><span class="dot"></span><span>Worked with terminal hardware integration, pilot deployments and scaling of transport payment infrastructure.</span></li>
+                </ul>
+                <div class="chip-wrap" style="margin-top:18px;">
+                  <span class="tag">Agile</span>
+                  <span class="tag">Release management</span>
+                  <span class="tag">Backlog prioritization</span>
+                  <span class="tag">Delivery governance</span>
+                </div>
+              </div>
+              <aside class="links-side">
+                <div class="eyebrow">Links</div>
+                <div class="links-col">
+                  <a class="link-card" href="https://www.ao-rr.ru" target="_blank" rel="noreferrer">Company</a>
+                </div>
+              </aside>
+            </div>
+          </article>
+
+          <article class="project-card">
+            <div class="project-grid">
+              <div>
+                <div class="project-head">
+                  <h3>International Game Platform</h3>
+                  <span class="period">2023–2024</span>
+                </div>
+                <div class="project-meta">Project Lead • NDA Project Game • Gaming / Web / Mobile / Payments</div>
+                <p class="project-summary">
+                  Delivered an international digital product from idea to release: website, WebGL game, digital goods marketplace, payment integration, admin panel, and mobile applications.
+                </p>
+                <ul class="bullets">
+                  <li><span class="dot"></span><span>Built a WebGL game with GTA-style POV driving and mission mechanics.</span></li>
+                  <li><span class="dot"></span><span>Launched a digital goods catalog with PSP payment gateway integration.</span></li>
+                  <li><span class="dot"></span><span>Delivered user account features, invoices, and admin controls for users, products, and orders.</span></li>
+                  <li><span class="dot"></span><span>Coordinated full-cycle delivery across backend, frontend, Unity, and mobile tracks.</span></li>
+                </ul>
+                <div class="chip-wrap" style="margin-top:18px;">
+                  <span class="tag">MongoDB</span>
+                  <span class="tag">ASP.NET</span>
+                  <span class="tag">React</span>
+                  <span class="tag">Node.js</span>
+                  <span class="tag">Unity</span>
+                </div>
+              </div>
+              <aside class="links-side">
+                <div class="eyebrow">Links</div>
+                <div class="feature">Private / NDA project links are not public.</div>
+              </aside>
+            </div>
+          </article>
+
+          <article class="project-card">
+            <div class="project-grid">
+              <div>
+                <div class="project-head">
+                  <h3>PMO for Full-Cycle Game Production</h3>
+                  <span class="period">2021–2023</span>
+                </div>
+                <div class="project-meta">Head of PMO • Redrift • Gamedev / Web3 / LiveOps</div>
+                <p class="project-summary">
+                  Managed a project office responsible for game production, releases, portfolio oversight, and delivery coordination across multiple streams.
+                </p>
+                <ul class="bullets">
+                  <li><span class="dot"></span><span>Delivered 10 full-cycle game projects in 14 months across web, mobile, and web3.</span></li>
+                  <li><span class="dot"></span><span>Managed 12 project managers and portfolios with teams from 3 to 60 people.</span></li>
+                  <li><span class="dot"></span><span>Worked with project budgets ranging from 15M to 50M RUB.</span></li>
+                  <li><span class="dot"></span><span>Introduced delivery control via dashboards, sprint tracking, and live visibility of resources and progress.</span></li>
+                </ul>
+                <div class="chip-wrap" style="margin-top:18px;">
+                  <span class="tag">Unity</span>
+                  <span class="tag">C#</span>
+                  <span class="tag">ASP.NET</span>
+                  <span class="tag">PHP</span>
+                  <span class="tag">Go</span>
+                  <span class="tag">ClickUp</span>
+                  <span class="tag">Notion</span>
+                  <span class="tag">Miro</span>
+                  <span class="tag">Figma</span>
+                </div>
+              </div>
+              <aside class="links-side">
+                <div class="eyebrow">Links</div>
+                <div class="links-col">
+                  <a class="link-card" href="https://redrift.com" target="_blank" rel="noreferrer">Redrift</a>
+                  <a class="link-card" href="https://berserk.vulcanforged.com/" target="_blank" rel="noreferrer">Berserk</a>
+                  <a class="link-card" href="https://puzzle-royale.gitbook.io/whitepaper/" target="_blank" rel="noreferrer">Puzzle Royal Whitepaper</a>
+                  <a class="link-card" href="https://coe.gg" target="_blank" rel="noreferrer">Cards of Eternity</a>
+                  <a class="link-card" href="https://play.google.com/store/apps/details?id=com.RedRift.StorySpark&hl=en_GB&gl=US" target="_blank" rel="noreferrer">Story Spark (Google Play)</a>
+                  <a class="link-card" href="https://www.youtube.com/playlist?list=PLIGFTTG0_MxZULLSz7krz0E_YbxHJ3Foy" target="_blank" rel="noreferrer">Portfolio videos</a>
+                </div>
+              </aside>
+            </div>
+          </article>
+
+          <article class="project-card">
+            <div class="project-grid">
+              <div>
+                <div class="project-head">
+                  <h3>Crypto Wallet and P2P Trading Platform</h3>
+                  <span class="period">2020–2021</span>
+                </div>
+                <div class="project-meta">Head of Projects — Mobile App & Website • NEOBANK (NDA) • Fintech / Crypto / Mobile Product</div>
+                <p class="project-summary">
+                  Led product and delivery management for a crypto wallet and P2P exchange in Telegram bot, mobile app, and web portal formats.
+                </p>
+                <ul class="bullets">
+                  <li><span class="dot"></span><span>Delivered 3 product releases over 12 months with 400 screens, 70 scenarios, and 2000+ test cases.</span></li>
+                  <li><span class="dot"></span><span>Managed roadmap, OKRs, backlog, and execution across product, design, support, business development, and engineering.</span></li>
+                  <li><span class="dot"></span><span>Integrated Firebase, Amplitude, AppsFlyer, and AppMetrica for analytics and growth tracking.</span></li>
+                  <li><span class="dot"></span><span>Achieved 4.6 Google Play rating based on 201 reviews.</span></li>
+                  <li><span class="dot"></span><span>Increased organic traffic 4x and website conversion 2x within 8 months.</span></li>
+                </ul>
+                <div class="chip-wrap" style="margin-top:18px;">
+                  <span class="tag">Android</span>
+                  <span class="tag">Firebase</span>
+                  <span class="tag">Amplitude</span>
+                  <span class="tag">AppsFlyer</span>
+                  <span class="tag">AppMetrica</span>
+                  <span class="tag">SEO</span>
+                  <span class="tag">Growth</span>
+                </div>
+              </div>
+              <aside class="links-side">
+                <div class="eyebrow">Links</div>
+                <div class="feature">Private / NDA project links are not public.</div>
+              </aside>
+            </div>
+          </article>
+
+          <article class="project-card">
+            <div class="project-grid">
+              <div>
+                <div class="project-head">
+                  <h3>Digital Transformation PMO</h3>
+                  <span class="period">2019–2020</span>
+                </div>
+                <div class="project-meta">PMO Project Manager • Samolet Development • Real Estate / Digital Transformation / PMO</div>
+                <p class="project-summary">
+                  Managed cross-functional transformation initiatives spanning marketing, IT, finance, CRM, analytics, and commercial operations.
+                </p>
+                <ul class="bullets">
+                  <li><span class="dot"></span><span>Implemented Jira and Confluence for 500 users.</span></li>
+                  <li><span class="dot"></span><span>Coordinated 10K+ completed tasks across teams in 6–9 months.</span></li>
+                  <li><span class="dot"></span><span>Improved agency traffic efficiency by 9%.</span></li>
+                  <li><span class="dot"></span><span>Reduced advertising cost per deal by 15%.</span></li>
+                  <li><span class="dot"></span><span>Supported transformation portfolio with 950M RUB impact in 2019 and 1.5B RUB impact in 2020.</span></li>
+                </ul>
+                <div class="chip-wrap" style="margin-top:18px;">
+                  <span class="tag">Jira</span>
+                  <span class="tag">Confluence</span>
+                  <span class="tag">Tableau</span>
+                  <span class="tag">OKR</span>
+                  <span class="tag">SAFe</span>
+                  <span class="tag">Agile coaching</span>
+                </div>
+              </div>
+              <aside class="links-side">
+                <div class="eyebrow">Links</div>
+                <div class="links-col">
+                  <a class="link-card" href="https://samoletgroup.ru" target="_blank" rel="noreferrer">Company</a>
+                </div>
+              </aside>
+            </div>
+          </article>
+
+          <article class="project-card">
+            <div class="project-grid">
+              <div>
+                <div class="project-head">
+                  <h3>Blockchain Casino and ICO Launch</h3>
+                  <span class="period">2018–2019</span>
+                </div>
+                <div class="project-meta">Project Manager (Marketing, Blockchain) • Gamblica • Blockchain / iGaming / Growth</div>
+                <p class="project-summary">
+                  Managed launch of a blockchain-based online casino and betting platform, combining product, marketing, token sale, and growth operations.
+                </p>
+                <ul class="bullets">
+                  <li><span class="dot"></span><span>Raised 3M+ USD through ICO and token sale activity.</span></li>
+                  <li><span class="dot"></span><span>Managed marketing team of 7 and coordinated with technical leadership.</span></li>
+                  <li><span class="dot"></span><span>Launched MVP gaming platform and listed the token on exchanges and CoinMarketCap.</span></li>
+                  <li><span class="dot"></span><span>Reached 480+ token holders.</span></li>
+                  <li><span class="dot"></span><span>Achieved ROI up to 150% on token purchase campaigns.</span></li>
+                </ul>
+                <div class="chip-wrap" style="margin-top:18px;">
+                  <span class="tag">Scrum</span>
+                  <span class="tag">CusDev</span>
+                  <span class="tag">HADI</span>
+                  <span class="tag">PR</span>
+                  <span class="tag">SMM</span>
+                  <span class="tag">Community</span>
+                  <span class="tag">Token sale</span>
+                </div>
+              </div>
+              <aside class="links-side">
+                <div class="eyebrow">Links</div>
+                <div class="links-col">
+                  <a class="link-card" href="https://coinmarketcap.com/currencies/gamblica/" target="_blank" rel="noreferrer">CoinMarketCap</a>
+                  <a class="link-card" href="https://medium.com/@gamblica" target="_blank" rel="noreferrer">Medium</a>
+                </div>
+              </aside>
+            </div>
+          </article>
+
+          <article class="project-card">
+            <div class="project-grid">
+              <div>
+                <div class="project-head">
+                  <h3>Trading Simulator Platform</h3>
+                  <span class="period">2018</span>
+                </div>
+                <div class="project-meta">Project Manager • SIMDAQ • Fintech / EdTech / Startup</div>
+                <p class="project-summary">
+                  Led MVP development for a trader training platform based on historical market data.
+                </p>
+                <ul class="bullets">
+                  <li><span class="dot"></span><span>Built a team of 15+ developers, designers, PR and SMM specialists.</span></li>
+                  <li><span class="dot"></span><span>Created product scenarios and 30+ dashboard and simulator screens.</span></li>
+                  <li><span class="dot"></span><span>Introduced gamification and ran early-stage customer development.</span></li>
+                  <li><span class="dot"></span><span>Organized product communications across Medium, Bitcointalk, Facebook, and Telegram.</span></li>
+                </ul>
+                <div class="chip-wrap" style="margin-top:18px;">
+                  <span class="tag">Node.js</span>
+                  <span class="tag">JavaScript</span>
+                  <span class="tag">Jira</span>
+                  <span class="tag">Confluence</span>
+                  <span class="tag">Slack</span>
+                </div>
+              </div>
+              <aside class="links-side">
+                <div class="eyebrow">Links</div>
+                <div class="links-col">
+                  <a class="link-card" href="https://www.youtube.com/watch?v=GOIhaW3cBHs&list=PLIGFTTG0_MxZULLSz7krz0E_YbxHJ3Foy&index=6" target="_blank" rel="noreferrer">Product presentation</a>
+                </div>
+              </aside>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container">
+        <div class="card">
+          <div class="split-grid">
+            <div>
+              <h2>How I work</h2>
+              <p class="section-copy">
+                I am most effective in remote environments where there is a need to align stakeholders, structure execution, and move a product from fragmented effort to predictable delivery.
+              </p>
+            </div>
+            <div class="quick-grid">
+              <div class="feature">Strong in cross-functional coordination between business, product and engineering.</div>
+              <div class="feature">Comfortable with startup ambiguity and enterprise-scale governance.</div>
+              <div class="feature">Can set up PMO dashboards, backlog discipline, release rhythm and delivery visibility.</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer id="contact" class="section footer-line">
+    <div class="container">
+      <div class="contact-grid">
+        <div>
+          <h2>Open to remote international roles</h2>
+          <p class="section-copy">
+            Looking for roles in program management, PMO leadership, project delivery, product operations or startup execution. Can work remotely from Russia or Armenia.
+          </p>
+        </div>
+        <div class="card" style="padding:20px;">
+          <div class="contact-list">
+            <a class="contact-row" href="mailto:tocryptopostman@gmail.com">
+              <span class="contact-label">Email</span>
+              <span class="contact-value">tocryptopostman@gmail.com</span>
+            </a>
+            <a class="contact-row" href="https://t.me/romwag" target="_blank" rel="noreferrer">
+              <span class="contact-label">Telegram</span>
+              <span class="contact-value">@romwag</span>
+            </a>
+            <a class="contact-row" href="http://linkedin.com/pub/roman-mironichev/14/636/69b/" target="_blank" rel="noreferrer">
+              <span class="contact-label">LinkedIn</span>
+              <span class="contact-value">roman-mironichev</span>
+            </a>
+            <a class="contact-row" href="https://www.youtube.com/playlist?list=PLIGFTTG0_MxZULLSz7krz0E_YbxHJ3Foy" target="_blank" rel="noreferrer">
+              <span class="contact-label">Portfolio Videos</span>
+              <span class="contact-value">YouTube playlist</span>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </footer>
+</body>
+</html>
