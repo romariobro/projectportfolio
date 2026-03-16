@@ -1,32 +1,108 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Portfolio</title>
-    <link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Roman Mironichev — Portfolio</title>
+  <meta name="description" content="Senior Technical Program Manager · Head of PMO · Product &amp; Startup Delivery — portfolio of Roman Mironichev.">
+  <link rel="stylesheet" href="style.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 </head>
 <body>
-    <header>
-        <div class="hero">
-            <h1>Welcome to My Portfolio</h1>
-            <a href="Mironichev Roman Alexandrovich CV Delivery Manager Senior Project Head Of PMO.pdf" class="btn">Download CV</a>
-            <a href="contact.html" class="btn">Contact</a>
+  <header class="hero">
+    <div class="container hero-grid">
+      <div>
+        <div class="pill">Remote · Russia / Armenia · Open to international teams</div>
+        <h1>Roman Mironichev</h1>
+        <p class="subtitle">Senior Technical Program Manager · Head of PMO · Product &amp; Startup Delivery</p>
+        <p class="lead">
+          Delivery leader who stabilises complex products and orchestrates distributed engineering teams.
+          Fintech, payments, crypto, gaming, high‑load platforms. Turning chaos into predictable delivery.
+        </p>
+        <div class="actions">
+          <a class="btn btn-primary"
+             href="Mironichev Roman Alexandrovich CV Delivery Manager Senior Project Head Of PMO.pdf"
+             target="_blank" rel="noreferrer noopener">Download CV (PDF)</a>
+          <a class="btn btn-secondary" href="#gallery">Portfolio</a>
+          <a class="btn btn-ghost" href="#contact">Contact</a>
         </div>
-    </header>
-    <section class="portfolio-gallery">
-        <h2>My Work</h2>
-        <div class="gallery">
-            <div class="filter">Filter by:</div>
-            <div class="images">
-                <!-- Grouped project images with tags go here -->
-            </div>
+      </div>
+      <aside class="card" aria-label="Quick stats">
+        <div class="eyebrow">Quick stats</div>
+        <div class="stats-grid">
+          <div class="stat">
+            <div class="stat-value">15+</div>
+            <div class="stat-label">years in digital delivery</div>
+          </div>
+          <div class="stat">
+            <div class="stat-value">100M</div>
+            <div class="stat-label">tx/day in payments systems</div>
+          </div>
+          <div class="stat">
+            <div class="stat-value">250</div>
+            <div class="stat-label">contributors in programs</div>
+          </div>
+          <div class="stat">
+            <div class="stat-value">10+</div>
+            <div class="stat-label">full-cycle games shipped</div>
+          </div>
         </div>
+      </aside>
+    </div>
+  </header>
+
+  <main>
+    <section id="gallery" class="section">
+      <div class="container">
+        <div class="section-head">
+          <div>
+            <h2>Project portfolio</h2>
+            <p class="section-copy">Cases grouped by domain — use the filter buttons or swipe through all.</p>
+          </div>
+          <div class="filters" id="filters" role="group" aria-label="Filter by tag"></div>
+        </div>
+
+        <div class="slider" role="region" aria-label="Portfolio slider">
+          <button class="nav-btn prev" id="prevBtn" aria-label="Previous slide">&#8249;</button>
+          <div class="viewport" id="viewport" tabindex="0">
+            <div class="track" id="track"></div>
+          </div>
+          <button class="nav-btn next" id="nextBtn" aria-label="Next slide">&#8250;</button>
+        </div>
+        <div class="slider-dots" id="dots" role="list" aria-label="Slide indicators"></div>
+      </div>
     </section>
-    <section class="projects">
-        <h2>Projects</h2>
-        <!-- Projects go here -->
-    </section>
-    <script src="script.js"></script>
+  </main>
+
+  <footer class="section footer-line" id="contact">
+    <div class="container contact-grid">
+      <div>
+        <h2>Open to remote international roles</h2>
+        <p class="section-copy">Program management · PMO leadership · Delivery · Product ops</p>
+      </div>
+      <nav class="card contact-card" aria-label="Contact links">
+        <a class="contact-row" href="mailto:tocryptopostman@gmail.com">
+          <span class="contact-label">Email</span>
+          <span class="contact-value">tocryptopostman@gmail.com</span>
+        </a>
+        <a class="contact-row" href="https://t.me/romwag" target="_blank" rel="noreferrer noopener">
+          <span class="contact-label">Telegram</span>
+          <span class="contact-value">@romwag</span>
+        </a>
+        <a class="contact-row" href="http://linkedin.com/pub/roman-mironichev/14/636/69b/" target="_blank" rel="noreferrer noopener">
+          <span class="contact-label">LinkedIn</span>
+          <span class="contact-value">roman-mironichev</span>
+        </a>
+        <a class="contact-row" href="https://www.youtube.com/playlist?list=PLIGFTTG0_MxZULLSz7krz0E_YbxHJ3Foy" target="_blank" rel="noreferrer noopener">
+          <span class="contact-label">Portfolio videos</span>
+          <span class="contact-value">YouTube</span>
+        </a>
+      </nav>
+    </div>
+  </footer>
+
+  <script src="script.js" type="module"></script>
 </body>
 </html>
