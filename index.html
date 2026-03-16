@@ -103,6 +103,18 @@
     </div>
   </footer>
 
+  <!-- ── Lightbox ─────────────────────────────────────── -->
+  <dialog id="lb" aria-label="Image lightbox" aria-modal="true">
+    <button class="lb-close" id="lbClose" aria-label="Close lightbox">&#x2715;</button>
+    <button class="lb-nav lb-prev" id="lbPrev" aria-label="Previous image">&#8249;</button>
+    <figure class="lb-figure">
+      <img id="lbImg" src="" alt="" class="lb-img">
+      <figcaption class="lb-caption" id="lbCaption"></figcaption>
+    </figure>
+    <button class="lb-nav lb-next" id="lbNext" aria-label="Next image">&#8250;</button>
+    <div class="lb-counter" id="lbCounter"></div>
+  </dialog>
+
   <script src="script.js" type="module"></script>
 </body>
 </html>

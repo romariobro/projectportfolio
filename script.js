@@ -113,7 +113,7 @@ let filtered = slides;
 function renderFilters() {
   const tags = Array.from(new Set(slides.flatMap(s => s.tags))).sort();
   filtersWrap.appendChild(createFilterBtn("all", "All"));
-  tags.forEach(tag => filtersWrap.appendChild(createFilterBtn(tag, "#" + tag)));
+  tags.forEach(tag => filtersWrap.appendChild(createFilterBtn(tag, `#${tag}`)));
   setActiveFilter("all");
 }
 
@@ -154,6 +154,8 @@ function renderSlides() {
     img.src = encodeURI(s.src);
     img.alt = s.title;
     img.loading = "lazy";
+    img.style.cursor = "zoom-in";
+    img.addEventListener("click", () => openLightbox(idx));
 
     const info = document.createElement("div");
     const h3 = document.createElement("h3");
@@ -255,11 +257,19 @@ viewport.addEventListener("wheel", e => {
 // ── Pointer / touch swipe ──────────────────────────────────────────────────
 let startX = 0;
 let startY = 0;
+let dragging = false;
 
 viewport.addEventListener("pointerdown", e => {
   startX = e.clientX;
   startY = e.clientY;
-  viewport.setPointerCapture(e.pointerId);
+  dragging = false;
+});
+
+viewport.addEventListener("pointermove", e => {
+  if (!dragging && Math.abs(e.clientX - startX) > 8) {
+    dragging = true;
+    viewport.setPointerCapture(e.pointerId);
+  }
 });
 
 viewport.addEventListener("pointerup", e => {
@@ -269,10 +279,76 @@ viewport.addEventListener("pointerup", e => {
     if (dx < 0 && current < filtered.length - 1) { current++; updatePosition(); }
     else if (dx > 0 && current > 0) { current--; updatePosition(); }
   }
+  dragging = false;
 });
 
 // ── Resize ─────────────────────────────────────────────────────────────────
 window.addEventListener("resize", () => updatePosition(false));
+
+// ── Lightbox ───────────────────────────────────────────────────────────────
+const lb = document.getElementById("lb");
+const lbImg = document.getElementById("lbImg");
+const lbCaption = document.getElementById("lbCaption");
+const lbCounter = document.getElementById("lbCounter");
+const lbClose = document.getElementById("lbClose");
+const lbPrev = document.getElementById("lbPrev");
+const lbNext = document.getElementById("lbNext");
+
+let lbIndex = 0;   // index within current filtered[]
+
+function openLightbox(idx) {
+  lbIndex = idx;
+  lbRender();
+  lb.showModal();
+  lbImg.focus();
+}
+
+function lbRender() {
+  const s = filtered[lbIndex];
+  if (!s) return;
+  lbImg.src = encodeURI(s.src);
+  lbImg.alt = s.title;
+  lbCaption.textContent = s.title;
+  lbCounter.textContent = `${lbIndex + 1} / ${filtered.length}`;
+  lbPrev.disabled = lbIndex === 0;
+  lbNext.disabled = lbIndex >= filtered.length - 1;
+}
+
+function lbGo(dir) {
+  const next = lbIndex + dir;
+  if (next < 0 || next >= filtered.length) return;
+  lbIndex = next;
+  lbRender();
+}
+
+lbClose.addEventListener("click", () => lb.close());
+lbPrev.addEventListener("click", () => lbGo(-1));
+lbNext.addEventListener("click", () => lbGo(1));
+
+// Close on backdrop click (click lands on the <dialog> element itself)
+lb.addEventListener("click", e => { if (e.target === lb) lb.close(); });
+
+// Keyboard inside lightbox
+lb.addEventListener("keydown", e => {
+  if (e.key === "ArrowRight" || e.key === "ArrowDown") { e.preventDefault(); lbGo(1); }
+  else if (e.key === "ArrowLeft" || e.key === "ArrowUp") { e.preventDefault(); lbGo(-1); }
+  // Escape is handled natively by <dialog>
+});
+
+// Swipe inside lightbox
+let lbStartX = 0;
+let lbStartY = 0;
+lb.addEventListener("pointerdown", e => {
+  lbStartX = e.clientX;
+  lbStartY = e.clientY;
+});
+lb.addEventListener("pointerup", e => {
+  const dx = e.clientX - lbStartX;
+  const dy = e.clientY - lbStartY;
+  if (Math.abs(dx) > Math.abs(dy) && Math.abs(dx) > 40) {
+    lbGo(dx < 0 ? 1 : -1);
+  }
+});
 
 // ── Init ───────────────────────────────────────────────────────────────────
 renderFilters();
