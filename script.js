@@ -94,6 +94,114 @@ const slides = [
     title: "Analytics — marketing",
     desc: "Stimulus campaigns, post-analysis of acquisition channels.",
     tags: ["analytics", "growth"]
+  },
+  {
+    src: "SEO google pruf.png",
+    title: "SEO — Google positions proof",
+    desc: "Organic search rankings growth on Google across key product queries.",
+    tags: ["seo", "analytics", "growth"]
+  },
+  {
+    src: "SEO pruf 2.png",
+    title: "SEO positions — proof 2",
+    desc: "Further evidence of top search positions achieved through SEO strategy.",
+    tags: ["seo", "analytics", "growth"]
+  },
+  {
+    src: "SEO keywords.png",
+    title: "SEO keywords map",
+    desc: "Keyword research and mapping for product landing pages.",
+    tags: ["seo", "analytics"]
+  },
+  {
+    src: "SEO pruf crypto 3.png",
+    title: "SEO — crypto project proof",
+    desc: "Search position results for crypto wallet product pages.",
+    tags: ["seo", "analytics", "crypto"]
+  },
+  {
+    src: "SEO pruf crypto ru.png",
+    title: "SEO — crypto RU market",
+    desc: "Russian-market SEO results for crypto wallet product.",
+    tags: ["seo", "analytics", "crypto"]
+  },
+  {
+    src: "SEO to top.jpg",
+    title: "SEO — growth to TOP",
+    desc: "Dynamic of organic traffic growth from page 3 to TOP-10 positions.",
+    tags: ["seo", "growth", "analytics"]
+  },
+  {
+    src: "SEO to TOP 2.jpg",
+    title: "SEO — growth to TOP (2)",
+    desc: "Further position growth across additional keyword clusters.",
+    tags: ["seo", "growth", "analytics"]
+  },
+  {
+    src: "Gant plan.png",
+    title: "Gantt plan — delivery roadmap",
+    desc: "Program-level Gantt chart used for multi-team delivery coordination.",
+    tags: ["pmo", "roadmap", "delivery"]
+  },
+  {
+    src: "Untitled.png",
+    title: "Project tracking overview",
+    desc: "High-level project status overview for portfolio governance.",
+    tags: ["pmo", "delivery"]
+  },
+  {
+    src: "doc_2023-03-03_21-39-32.png",
+    title: "Game production — document 1",
+    desc: "Internal production documentation from game development program.",
+    tags: ["gaming", "pmo", "process"]
+  },
+  {
+    src: "doc_2023-03-03_21-40-00.png",
+    title: "Game production — document 2",
+    desc: "Sprint planning and team coordination artifacts.",
+    tags: ["gaming", "pmo", "process"]
+  },
+  {
+    src: "doc_2023-03-03_21-40-11.png",
+    title: "Game production — document 3",
+    desc: "Release tracking and milestone reporting.",
+    tags: ["gaming", "pmo", "delivery"]
+  },
+  {
+    src: "photo_2020-11-29_21-24-31.jpg",
+    title: "Product team — 2020",
+    desc: "Team at work during NEOBANK crypto wallet product development phase.",
+    tags: ["fintech", "crypto", "team"]
+  },
+  {
+    src: "photo_2021-08-31_03-39-37.jpg",
+    title: "Product team — 2021",
+    desc: "Team during Redrift gamedev PMO program.",
+    tags: ["gaming", "team"]
+  },
+  {
+    src: "photo_2022-12-26_15-12-58.jpg",
+    title: "Team event — 2022",
+    desc: "Team gathering during active game production cycle.",
+    tags: ["gaming", "team"]
+  },
+  {
+    src: "photo_2022-12-26_15-13-00.jpg",
+    title: "Team event — 2022 (2)",
+    desc: "Cross-functional team collaboration session.",
+    tags: ["gaming", "team"]
+  },
+  {
+    src: "photo_2022-12-26_15-13-01.jpg",
+    title: "Team event — 2022 (3)",
+    desc: "End of year team review and retrospective.",
+    tags: ["gaming", "team"]
+  },
+  {
+    src: "photo_2023-02-26_00-13-39.jpg",
+    title: "Team — early 2023",
+    desc: "Team at the start of a new game launch cycle.",
+    tags: ["gaming", "team"]
   }
 ];
 
