@@ -94,6 +94,36 @@ const slides = [
     title: "Analytics — marketing",
     desc: "Stimulus campaigns, post-analysis of acquisition channels.",
     tags: ["analytics", "growth"]
+  },
+  {
+    src: "Transport_payment_platform.png",
+    title: "Transport Payment Platform",
+    desc: "100M tx/day system: terminal + online channels, 12-team coordination, 14 production releases.",
+    tags: ["fintech", "payments", "pmo", "delivery"]
+  },
+  {
+    src: "Crypto_wallet_dashboard.png",
+    title: "Crypto Wallet — Dashboard",
+    desc: "300K users, P2P exchange, 400 screens, 4.6 Google Play rating.",
+    tags: ["fintech", "crypto", "mobile"]
+  },
+  {
+    src: "PMO_program_overview.png",
+    title: "PMO Program Overview",
+    desc: "Portfolio of 10+ parallel streams, delivery variance 3–5%, dashboards for 250-person programs.",
+    tags: ["pmo", "roadmap", "delivery", "analytics"]
+  },
+  {
+    src: "Blockchain_casino_ico.png",
+    title: "Blockchain Casino & ICO",
+    desc: "$3M+ raised, MVP platform launched, token listed on CoinMarketCap, 480+ holders.",
+    tags: ["blockchain", "growth", "marketing"]
+  },
+  {
+    src: "Digital_transform_pmo.png",
+    title: "Digital Transformation PMO",
+    desc: "Samolet: Jira/Confluence for 500 users, 10K+ tasks, 950M RUB portfolio impact.",
+    tags: ["pmo", "delivery", "process"]
   }
 ];
 
@@ -148,15 +178,22 @@ function renderSlides() {
   filtered.forEach((s) => {
     const slide = document.createElement("article");
     slide.className = "slide";
+
     const img = document.createElement("img");
+    img.className = "slide-bg";
     img.src = encodeURI(s.src);
     img.alt = s.title;
     img.loading = "lazy";
-    const info = document.createElement("div");
+
+    const caption = document.createElement("div");
+    caption.className = "slide-caption";
+
     const heading = document.createElement("h3");
     heading.textContent = s.title;
+
     const desc = document.createElement("p");
     desc.textContent = s.desc;
+
     const tagsDiv = document.createElement("div");
     tagsDiv.className = "tags";
     s.tags.forEach(t => {
@@ -165,12 +202,24 @@ function renderSlides() {
       span.textContent = "#" + t;
       tagsDiv.appendChild(span);
     });
-    info.append(heading, desc, tagsDiv);
-    slide.append(img, info);
+
+    caption.append(heading, desc, tagsDiv);
+    slide.append(img, caption);
     track.appendChild(slide);
   });
+  updateCounter();
   renderDots();
   updatePosition();
+}
+
+function updateCounter() {
+  let counter = document.querySelector(".slide-counter");
+  if (!counter) {
+    counter = document.createElement("div");
+    counter.className = "slide-counter";
+    document.querySelector(".slider").appendChild(counter);
+  }
+  counter.textContent = filtered.length > 0 ? `${current + 1} / ${filtered.length}` : "";
 }
 
 // ─── Dots ────────────────────────────────────────────────────────────────────
@@ -199,13 +248,12 @@ function syncDots() {
 // ─── Position ────────────────────────────────────────────────────────────────
 
 function updatePosition() {
-  const firstSlide = track.querySelector(".slide");
-  const slideWidth = firstSlide ? firstSlide.getBoundingClientRect().width : 0;
-  const gap = 16;
-  track.style.transform = `translateX(${-(slideWidth + gap) * current}px)`;
+  const slideWidth = window.innerWidth;
+  track.style.transform = `translateX(${-slideWidth * current}px)`;
   prevBtn.disabled = current === 0;
   nextBtn.disabled = current >= filtered.length - 1;
   syncDots();
+  updateCounter();
 }
 
 // ─── Controls ────────────────────────────────────────────────────────────────
