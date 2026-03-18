@@ -1,0 +1,524 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Роман Мироничев — Портфолио</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+  <header class="hero">
+    <div class="container hero-grid">
+      <div>
+        <div class="pill">Удалённо · Россия / Армения · Открыт для международных команд</div>
+        <h1>Роман Мироничев</h1>
+        <p class="subtitle">Senior Technical Program Manager · Head of PMO · Продуктовая и стартап-доставка</p>
+        <p class="lead">
+          Лидер доставки, который стабилизирует сложные продукты и оркестрирует распределённые инженерные команды.
+          Финтех, платежи, крипто, геймдев, высоконагруженные платформы. Превращаю хаос в предсказуемую доставку.
+        </p>
+        <div class="actions">
+          <a class="btn btn-primary" href="Mironichev Roman Alexandrovich CV Delivery Manager Senior Project Head Of PMO.pdf" target="_blank" rel="noreferrer">Скачать CV (PDF)</a>
+          <a class="btn btn-secondary" href="#gallery">Портфолио</a>
+          <a class="btn btn-ghost" href="#contact">Контакты</a>
+        </div>
+      </div>
+      <aside class="card">
+        <div class="eyebrow">Ключевые цифры</div>
+        <div class="stats-grid">
+          <div class="stat">
+            <div class="stat-value">15+</div><div class="stat-label">лет в цифровой доставке</div>
+          </div>
+          <div class="stat">
+            <div class="stat-value">100M</div><div class="stat-label">транзакций/день в платёжных системах</div>
+          </div>
+          <div class="stat">
+            <div class="stat-value">250</div><div class="stat-label">участников в программах</div>
+          </div>
+          <div class="stat">
+            <div class="stat-value">10+</div><div class="stat-label">полных циклов выпуска игр</div>
+          </div>
+        </div>
+      </aside>
+    </div>
+  </header>
+
+  <main>
+    <section id="gallery" class="section">
+      <div class="container">
+        <div class="section-head">
+          <div>
+            <h2>Портфолио проектов</h2>
+            <p class="section-copy">Кейсы сгруппированы по тегам — быстрые фильтры, свайп, навигация клавиатурой и точками.</p>
+          </div>
+          <div class="filters" id="filters" role="group" aria-label="Фильтр по тегу"></div>
+        </div>
+
+        <div class="slider" role="region" aria-label="Слайдер портфолио">
+          <button class="nav-btn prev" id="prevBtn" aria-label="Предыдущий слайд">&#8249;</button>
+          <div class="viewport" id="viewport">
+            <div class="track" id="track" aria-live="polite"></div>
+          </div>
+          <button class="nav-btn next" id="nextBtn" aria-label="Следующий слайд">&#8250;</button>
+        </div>
+        <div class="slider-dots" id="dots" role="tablist" aria-label="Индикаторы слайдов"></div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container">
+        <div class="card card-emerald">
+          <div class="split-grid">
+            <div>
+              <h2>Краткий обзор для рекрутера</h2>
+              <p class="section-copy">
+                Technical Program Manager с фокусом на доставку, опытом стабилизации сложных продуктов и координации крупных распределённых инженерных команд.
+              </p>
+            </div>
+            <div class="quick-grid">
+              <div class="feature">Платёжная платформа на 100M транзакций в день</div>
+              <div class="feature">Транспортная платёжная экосистема на 40M пользователей</div>
+              <div class="feature">Портфель разработки игр на $5M в год</div>
+              <div class="feature">300K пользователей крипто-кошелька • $10M ежемесячных транзакций</div>
+              <div class="feature">Команды до 250 участников — внутренние и внешние</div>
+              <div class="feature">14 продуктовых релизов за год • 10 запусков игр за 14 месяцев</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" style="padding-top:0;">
+      <div class="container">
+        <div class="card">
+          <div class="split-grid">
+            <div>
+              <h2>AI-стек продуктивности</h2>
+              <p class="section-copy">
+                Активный практик использования современных LLM-систем для продуктовых исследований, прототипирования и повышения инженерной продуктивности.
+              </p>
+            </div>
+            <div class="quick-grid">
+              <div class="feature">Claude, ChatGPT и Gemini для исследований, требований и анализа рынка</div>
+              <div class="feature">Быстрое прототипирование лендингов, инструментов и продуктовых концепций</div>
+              <div class="feature">Скрипты автоматизации, исследование аналитики и инженерная поддержка</div>
+              <div class="feature">Создание экспериментальных инструментов, включая суммаризатор транскриптов YouTube</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" style="padding-top:0;">
+      <div class="container">
+        <div class="two-col">
+          <div>
+            <h2>Чем я занимаюсь</h2>
+            <p class="section-copy">
+              Я работаю на пересечении продуктовой реализации, технической доставки и бизнес-структуры. Эта страница — практическое портфолио для ролей PM, TPM и Head of PMO.
+            </p>
+          </div>
+          <div class="feature-grid">
+            <div class="feature">Исправление сломанной доставки и восстановление предсказуемости релизов</div>
+            <div class="feature">Структурирование хаотичных организаций в работающие системы доставки</div>
+            <div class="feature">Управление техническими программами и проектами</div>
+            <div class="feature">Создание PMO и управление портфелем</div>
+            <div class="feature">Запуск продукта от идеи до продакшена</div>
+            <div class="feature">Кросс-функциональное лидерство</div>
+            <div class="feature">Финтех, платежи, крипто и блокчейн-продукты</div>
+            <div class="feature">Геймдев-продакшн и управление релизами</div>
+            <div class="feature">Мобильные и высоконагруженные платформы</div>
+            <div class="feature">Agile-операции, OKR, бэклог и планирование релизов</div>
+            <div class="feature">AI-ассистированная разработка продуктов с Claude, ChatGPT и Gemini</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" style="padding-top:0;">
+      <div class="container">
+        <div class="card" style="margin-bottom:24px;">
+          <div class="split-grid">
+            <div>
+              <h2>Коммерческий опыт и рост</h2>
+              <p class="section-copy">
+                Ранняя карьера построена в цифровых продажах, маркетинге и коммерциализации продуктов. Этот опыт позволяет мне связывать разработку продуктов с реальными результатами по выручке и ростом бизнеса.
+              </p>
+            </div>
+            <div class="quick-grid">
+              <div class="feature">5+ лет продаж цифровых продуктов, рекламы и кастомных технологических решений (B2B и B2C)</div>
+              <div class="feature">Практический опыт в digital-маркетинге: лендинги, рост трафика, платное привлечение и аналитика</div>
+              <div class="feature">Работа над брендингом, дизайн-системами, сайтами и запуском мобильных продуктов</div>
+              <div class="feature">Умение переводить продуктовые идеи в коммерческие результаты и измеримый рост</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="card">
+          <div class="split-grid">
+            <div>
+              <h2>Лидерство в крупных программах</h2>
+            </div>
+            <div class="quick-grid">
+              <div class="feature">Опыт координации программ с участием до 250 человек — внутренние команды и внешние подрядчики</div>
+              <div class="feature">Управление портфелями из 10+ параллельных инициатив разработки</div>
+              <div class="feature">Поддержание отклонения доставки в пределах ~3–5% от плановых сроков на длинных продуктовых циклах</div>
+              <div class="feature">Глубокая способность быстро разбираться в сложных системах и стабилизировать исполнение</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="projects" class="section" style="padding-top:16px;">
+      <div class="container">
+        <div>
+          <h2>Избранные проекты</h2>
+          <p class="section-copy" style="margin-top:10px;">Детальные кейсы проектов для удалённых международных возможностей.</p>
+        </div>
+
+        <div class="project-list">
+          <article class="project-card">
+            <div class="project-grid">
+              <div>
+                <div class="project-head">
+                  <h3>Платформа обработки транспортных платежей</h3>
+                  <span class="period">2024–2025</span>
+                </div>
+                <div class="project-meta">Проект-менеджер • Группа Сбер / АО «Расчётные Решения» • Финтех / Платежи / Высоконагруженные системы</div>
+                <p class="project-summary">
+                  Руководил доставкой платформы обработки и предобработки транспортных платежей, используемой в крупных городских транспортных сетях. Система обрабатывает платежи с терминалов и онлайн-каналов и работает в рамках мульти-системной экосистемы с банками, транспортными операторами и регуляторными требованиями.
+                </p>
+                <ul class="bullets">
+                  <li><span class="bullet-dot"></span><span>Масштаб платформы: ~100M платёжных транзакций в день через терминалы и онлайн-каналы.</span></li>
+                  <li><span class="bullet-dot"></span><span>Транспортная экосистема, обслуживающая ~40M пользователей.</span></li>
+                  <li><span class="bullet-dot"></span><span>Координация доставки ~12 команд, работающих с 10–15 внутренними и ~10 внешними партнёрскими системами.</span></li>
+                  <li><span class="bullet-dot"></span><span>Улучшение показателей доставки с 20% до 70% релизов, выпущенных в срок.</span></li>
+                  <li><span class="bullet-dot"></span><span>14 продуктовых релизов за цикл проекта.</span></li>
+                  <li><span class="bullet-dot"></span><span>Запуск 10+ продуктовых фичей, улучшающих скорость оплаты и пассажирский опыт.</span></li>
+                  <li><span class="bullet-dot"></span><span>Управление полным жизненным циклом доставки от бизнес-запроса до продакшн-релиза с командой 40+ инженеров.</span></li>
+                  <li><span class="bullet-dot"></span><span>Работа с интеграцией терминального оборудования, пилотными запусками и масштабиров��нием транспортной платёжной инфраструктуры.</span></li>
+                </ul>
+                <div class="chip-wrap">
+                  <span class="tag">Agile</span>
+                  <span class="tag">Управление релизами</span>
+                  <span class="tag">Приоритизация бэклога</span>
+                  <span class="tag">Управление доставкой</span>
+                </div>
+              </div>
+              <aside class="links-side">
+                <div class="eyebrow">Ссылки</div>
+                <div class="links-col">
+                  <a class="link-card" href="https://www.ao-rr.ru" target="_blank" rel="noreferrer">Компания</a>
+                </div>
+              </aside>
+            </div>
+          </article>
+
+          <article class="project-card">
+            <div class="project-grid">
+              <div>
+                <div class="project-head">
+                  <h3>Международная игровая платформа</h3>
+                  <span class="period">2023–2024</span>
+                </div>
+                <div class="project-meta">Руководитель проекта • NDA Project Game • Геймдев / Веб / Мобайл / Платежи</div>
+                <p class="project-summary">
+                  Довёл международный цифровой продукт от идеи до релиза: сайт, WebGL-игра, маркетплейс цифровых товаров, платёжная интеграция, админ-панель и мобильные приложения.
+                </p>
+                <ul class="bullets">
+                  <li><span class="bullet-dot"></span><span>Создание WebGL-игры с видом от первого лица в стиле GTA с миссиями.</span></li>
+                  <li><span class="bullet-dot"></span><span>Запуск каталога цифровых товаров с интеграцие�� PSP-платёжного шлюза.</span></li>
+                  <li><span class="bullet-dot"></span><span>Реализация пользовательских аккаунтов, счетов и админ-функций для пользователей, товаров и заказов.</span></li>
+                  <li><span class="bullet-dot"></span><span>Координация полного цикла доставки по трекам бэкенда, фронтенда, Unity и мобайла.</span></li>
+                </ul>
+                <div class="chip-wrap">
+                  <span class="tag">MongoDB</span>
+                  <span class="tag">ASP.NET</span>
+                  <span class="tag">React</span>
+                  <span class="tag">Node.js</span>
+                  <span class="tag">Unity</span>
+                </div>
+              </div>
+              <aside class="links-side">
+                <div class="eyebrow">Ссылки</div>
+                <div class="feature">Частный / NDA проект — ссылки закрыты.</div>
+              </aside>
+            </div>
+          </article>
+
+          <article class="project-card">
+            <div class="project-grid">
+              <div>
+                <div class="project-head">
+                  <h3>PMO для полного цикла игрового продакшена</h3>
+                  <span class="period">2021–2023</span>
+                </div>
+                <div class="project-meta">Head of PMO • Redrift • Геймдев / Web3 / LiveOps</div>
+                <p class="project-summary">
+                  Управление проектным офисом, отвечающим за игровой продакшн, релизы, контроль портфеля и координацию доставки по нескольким направлениям.
+                </p>
+                <ul class="bullets">
+                  <li><span class="bullet-dot"></span><span>Выпуск 10 игр полного цикла за 14 месяцев — веб, мобайл и web3.</span></li>
+                  <li><span class="bullet-dot"></span><span>Управление 12 проект-менеджерами и портфелями с командами от 3 до 60 человек.</span></li>
+                  <li><span class="bullet-dot"></span><span>Работа с бюджетами проектов от 15M до 50M руб.</span></li>
+                  <li><span class="bullet-dot"></span><span>Внедрение контроля доставки через дашборды, спринт-трекинг и визуализацию ресурсов и прогресса.</span></li>
+                </ul>
+                <div class="chip-wrap">
+                  <span class="tag">Unity</span>
+                  <span class="tag">C#</span>
+                  <span class="tag">ASP.NET</span>
+                  <span class="tag">PHP</span>
+                  <span class="tag">Go</span>
+                  <span class="tag">ClickUp</span>
+                  <span class="tag">Notion</span>
+                  <span class="tag">Miro</span>
+                  <span class="tag">Figma</span>
+                </div>
+              </div>
+              <aside class="links-side">
+                <div class="eyebrow">Ссылки</div>
+                <div class="links-col">
+                  <a class="link-card" href="https://redrift.com" target="_blank" rel="noreferrer">Redrift</a>
+                  <a class="link-card" href="https://berserk.vulcanforged.com/" target="_blank" rel="noreferrer">Berserk</a>
+                  <a class="link-card" href="https://puzzle-royale.gitbook.io/whitepaper/" target="_blank" rel="noreferrer">Puzzle Royal Whitepaper</a>
+                  <a class="link-card" href="https://coe.gg" target="_blank" rel="noreferrer">Cards of Eternity</a>
+                  <a class="link-card" href="https://play.google.com/store/apps/details?id=com.RedRift.StorySpark&hl=en_GB&gl=US" target="_blank" rel="noreferrer">Story Spark (Google Play)</a>
+                  <div class="yt-embed">
+                    <iframe
+                      src="https://www.youtube.com/embed/videoseries?list=PLIGFTTG0_MxZULLSz7krz0E_YbxHJ3Foy&rel=0"
+                      allow="autoplay; encrypted-media; picture-in-picture"
+                      allowfullscreen
+                      title="Видео портфолио"
+                    ></iframe>
+                  </div>
+                </div>
+              </aside>
+            </div>
+          </article>
+
+          <article class="project-card">
+            <div class="project-grid">
+              <div>
+                <div class="project-head">
+                  <h3>Крипто-кошелёк и P2P-торговая платформа</h3>
+                  <span class="period">2020–2021</span>
+                </div>
+                <div class="project-meta">Руководитель проектов — мобильное приложение и сайт • NEOBANK (NDA) • Финтех / Крипто / Мобильный продукт</div>
+                <p class="project-summary">
+                  Руководил продуктовым и delivery-менеджментом крипто-кошелька и P2P-обменника в форматах Telegram-бота, мобильного приложения и веб-портала.
+                </p>
+                <ul class="bullets">
+                  <li><span class="bullet-dot"></span><span>3 продуктовых релиза за 12 месяцев с 400 экранами, 70 сценариями и 2000+ тест-кейсами.</span></li>
+                  <li><span class="bullet-dot"></span><span>Управление роадмапом, OKR, бэклогом и исполнением по продукту, дизайну, поддержке, бизнес-развитию и инженерии.</span></li>
+                  <li><span class="bullet-dot"></span><span>Интеграция Firebase, Amplitude, AppsFlyer и AppMetrica для аналитики и трекинга роста.</span></li>
+                  <li><span class="bullet-dot"></span><span>Рейтинг 4.6 в Google Play на основе 201 отзыва.</span></li>
+                  <li><span class="bullet-dot"></span><span>Рост органического трафика в 4 раза и конверсии сайта в 2 раза за 8 месяцев.</span></li>
+                </ul>
+                <div class="chip-wrap">
+                  <span class="tag">Android</span>
+                  <span class="tag">Firebase</span>
+                  <span class="tag">Amplitude</span>
+                  <span class="tag">AppsFlyer</span>
+                  <span class="tag">AppMetrica</span>
+                  <span class="tag">SEO</span>
+                  <span class="tag">Рост</span>
+                </div>
+              </div>
+              <aside class="links-side">
+                <div class="eyebrow">Ссылки</div>
+                <div class="feature">Частный / NDA проект — ссылки закрыты.</div>
+              </aside>
+            </div>
+          </article>
+
+          <article class="project-card">
+            <div class="project-grid">
+              <div>
+                <div class="project-head">
+                  <h3>PMO цифровой трансформации</h3>
+                  <span class="period">2019–2020</span>
+                </div>
+                <div class="project-meta">PMO Проект-менеджер • ГК Самолёт • Недвижимость / Цифровая трансформация / PMO</div>
+                <p class="project-summary">
+                  Управление кросс-функциональными инициативами трансформации в маркетинге, IT, финансах, CRM, аналитике и коммерческих операциях.
+                </p>
+                <ul class="bullets">
+                  <li><span class="bullet-dot"></span><span>Внедрение Jira и Confluence для 500 пользователей.</span></li>
+                  <li><span class="bullet-dot"></span><span>Координация 10K+ выполненных задач по командам за 6–9 месяцев.</span></li>
+                  <li><span class="bullet-dot"></span><span>Повышение эффективности агентского трафика на 9%.</span></li>
+                  <li><span class="bullet-dot"></span><span>Снижение стоимости рекламы на сделку на 15%.</span></li>
+                  <li><span class="bullet-dot"></span><span>Поддержка портфеля трансформации с эффектом 950M руб. в 2019 и 1,5B руб. в 2020.</span></li>
+                </ul>
+                <div class="chip-wrap">
+                  <span class="tag">Jira</span>
+                  <span class="tag">Confluence</span>
+                  <span class="tag">Tableau</span>
+                  <span class="tag">OKR</span>
+                  <span class="tag">SAFe</span>
+                  <span class="tag">Agile-коучинг</span>
+                </div>
+              </div>
+              <aside class="links-side">
+                <div class="eyebrow">Ссылки</div>
+                <div class="links-col">
+                  <a class="link-card" href="https://samoletgroup.ru" target="_blank" rel="noreferrer">Компания</a>
+                </div>
+              </aside>
+            </div>
+          </article>
+
+          <article class="project-card">
+            <div class="project-grid">
+              <div>
+                <div class="project-head">
+                  <h3>Блокчейн-казино и запуск ICO</h3>
+                  <span class="period">2018–2019</span>
+                </div>
+                <div class="project-meta">Проект-менеджер (Маркетинг, Блокчейн) • Gamblica • Блокчейн / iGaming / Рост</div>
+                <p class="project-summary">
+                  Управление запуском блокчейн-казино и букмекерской платформы — продукт, маркетинг, токен-сейл и growth-операции.
+                </p>
+                <ul class="bullets">
+                  <li><span class="bullet-dot"></span><span>Привлечено 3M+ USD через ICO и активность по продаже токенов.</span></li>
+                  <li><span class="bullet-dot"></span><span>Управление маркетинговой командой из 7 человек и координация с техническим руководством.</span></li>
+                  <li><span class="bullet-dot"></span><span>Запуск MVP игровой платформы и листинг токена на биржах и CoinMarketCap.</span></li>
+                  <li><span class="bullet-dot"></span><span>Достигнуто 480+ держателей токенов.</span></li>
+                  <li><span class="bullet-dot"></span><span>ROI до 150% на кампаниях по покупке токенов.</span></li>
+                </ul>
+                <div class="chip-wrap">
+                  <span class="tag">Scrum</span>
+                  <span class="tag">CusDev</span>
+                  <span class="tag">HADI</span>
+                  <span class="tag">PR</span>
+                  <span class="tag">SMM</span>
+                  <span class="tag">Комьюнити</span>
+                  <span class="tag">Токен-сейл</span>
+                </div>
+              </div>
+              <aside class="links-side">
+                <div class="eyebrow">Ссылки</div>
+                <div class="links-col">
+                  <a class="link-card" href="https://coinmarketcap.com/currencies/gamblica/" target="_blank" rel="noreferrer">CoinMarketCap</a>
+                  <a class="link-card" href="https://medium.com/@gamblica" target="_blank" rel="noreferrer">Medium</a>
+                </div>
+              </aside>
+            </div>
+          </article>
+
+          <article class="project-card">
+            <div class="project-grid">
+              <div>
+                <div class="project-head">
+                  <h3>Платформа-симулятор трейдинга</h3>
+                  <span class="period">2018</span>
+                </div>
+                <div class="project-meta">Проект-менеджер • SIMDAQ • Финтех / EdTech / Стартап</div>
+                <p class="project-summary">
+                  Руководство разработкой MVP платформы для обучения трейдеров на основе исторических рыночных данных.
+                </p>
+                <ul class="bullets">
+                  <li><span class="bullet-dot"></span><span>Сформирована команда из 15+ разработчиков, дизайнеров, PR- и SMM-специалистов.</span></li>
+                  <li><span class="bullet-dot"></span><span>Созданы продуктовые сценарии и 30+ экранов дашбордов и симулятора.</span></li>
+                  <li><span class="bullet-dot"></span><span>Внедрение геймификации и проведение ранней стадии customer development.</span></li>
+                  <li><span class="bullet-dot"></span><span>Организация продуктовых коммуникаций через Medium, Bitcointalk, Facebook и Telegram.</span></li>
+                </ul>
+                <div class="chip-wrap">
+                  <span class="tag">Node.js</span>
+                  <span class="tag">JavaScript</span>
+                  <span class="tag">Jira</span>
+                  <span class="tag">Confluence</span>
+                  <span class="tag">Slack</span>
+                </div>
+              </div>
+              <aside class="links-side">
+                <div class="eyebrow">Ссылки</div>
+                <div class="links-col">
+                  <div class="yt-embed" data-vid="GOIhaW3cBHs">
+                    <img
+                      class="yt-thumb"
+                      src="https://i.ytimg.com/vi/GOIhaW3cBHs/hqdefault.jpg"
+                      alt="SIMDAQ — Презентация продукта"
+                      loading="lazy"
+                    />
+                    <button class="yt-play" aria-label="Воспроизвести SIMDAQ — Презентация продукта">
+                      <svg viewBox="0 0 68 48" width="68" height="48"><path d="M66.5 7.7A8.5 8.5 0 0 0 60.7 2C55.4.5 34 .5 34 .5S12.6.5 7.3 2A8.5 8.5 0 0 0 1.5 7.7C0 13 0 24 0 24s0 11 1.5 16.3A8.5 8.5 0 0 0 7.3 46C12.6 47.5 34 47.5 34 47.5s21.4 0 26.7-1.5a8.5 8.5 0 0 0 5.8-5.7C68 35 68 24 68 24s0-11-1.5-16.3z" fill="#f00"/><path d="M27 34l18-10-18-10v20z" fill="#fff"/></svg>
+                    </button>
+                    <div class="yt-title">SIMDAQ — Презентация продукта</div>
+                  </div>
+                </div>
+              </aside>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container">
+        <div class="card">
+          <div class="split-grid">
+            <div>
+              <h2>Как я работаю</h2>
+              <p class="section-copy">
+                Наиболее эффективен в удалённых средах, где нужно согласовать стейкхолдеров, выстроить исполнение и перевести продукт от фрагментарных усилий к предсказуемой доставке.
+              </p>
+            </div>
+            <div class="quick-grid">
+              <div class="feature">Сильная кросс-функциональная координация между бизнесом, продуктом и инженерией.</div>
+              <div class="feature">Комфортно и в стартап-неопределённости, и в корпоративном управлении.</div>
+              <div class="feature">Могу настроить PMO-дашборды, дисциплину бэклога, ритм релизов и прозрачность доставки.</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="section footer-line" id="contact">
+    <div class="container contact-grid">
+      <div>
+        <h2>Открыт для удалённых международных ролей</h2>
+        <p class="section-copy">Управление программами · PMO-лидерство · Доставка · Product ops</p>
+      </div>
+      <div class="card contact-card">
+        <a class="contact-row" href="mailto:tocryptopostman@gmail.com">
+          <span class="contact-label">Email</span><span class="contact-value">tocryptopostman@gmail.com</span>
+        </a>
+        <a class="contact-row" href="https://t.me/romwag" target="_blank" rel="noreferrer">
+          <span class="contact-label">Telegram</span><span class="contact-value">@romwag</span>
+        </a>
+        <a class="contact-row" href="http://linkedin.com/pub/roman-mironichev/14/636/69b/" target="_blank" rel="noreferrer">
+          <span class="contact-label">LinkedIn</span><span class="contact-value">roman-mironichev</span>
+        </a>
+        <a class="contact-row" href="https://www.youtube.com/playlist?list=PLIGFTTG0_MxZULLSz7krz0E_YbxHJ3Foy" target="_blank" rel="noreferrer">
+          <span class="contact-label">Видео портфолио</span><span class="contact-value">YouTube</span>
+        </a>
+        <a class="contact-row" href="projects.html">
+          <span class="contact-label">Проекты и SEO-портфолио</span><span class="contact-value">→ Все проекты</span>
+        </a>
+      </div>
+    </div>
+  </footer>
+
+  <script src="script.js" type="module"></script>
+  <script>
+    document.querySelectorAll('.yt-embed[data-vid]').forEach(function(embed) {
+      embed.addEventListener('click', function() {
+        var vid = embed.dataset.vid;
+        var titleEl = embed.querySelector('.yt-title');
+        var title = titleEl ? titleEl.textContent : '';
+        var iframe = document.createElement('iframe');
+        iframe.src = 'https://www.youtube.com/embed/' + vid + '?autoplay=1&rel=0';
+        iframe.allow = 'autoplay; encrypted-media; picture-in-picture';
+        iframe.allowFullscreen = true;
+        iframe.title = title;
+        embed.replaceChildren(iframe);
+      });
+    });
+  </script>
+</body>
+</html>
