@@ -408,3 +408,27 @@ h3 { font-size: clamp(20px, 2.6vw, 28px); line-height: 1.1; }
   border-radius: 14px;
   margin-top: 0;
 }
+
+/* ─── Video case card ────────────────────────────────────────────────────── */
+
+.video-case .video-case-hero {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+  margin-bottom: 20px;
+}
+
+.video-case .video-case-hero .yt-embed {
+  border-radius: var(--radius-sm);
+}
+
+.video-case .video-case-hero.single {
+  grid-template-columns: 1fr;
+  max-width: 640px;
+}
+
+@media (max-width: 720px) {
+  .video-case .video-case-hero {
+    grid-template-columns: 1fr;
+  }
+}
