@@ -1,0 +1,829 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Projects — Roman Mironichev Portfolio</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    /* ─── Page-specific nav ──────────────────────────────────────────────────── */
+    .projects-nav {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: rgba(2, 6, 23, 0.92);
+      border-bottom: 1px solid var(--line);
+      backdrop-filter: blur(12px);
+      padding: 14px 0;
+    }
+    .projects-nav .container {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 8px 20px;
+    }
+    .nav-back {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      color: var(--muted);
+      font-size: 14px;
+      transition: color 0.14s ease;
+    }
+    .nav-back:hover { color: var(--accent); }
+    .nav-divider {
+      width: 1px;
+      height: 18px;
+      background: var(--line);
+    }
+    .nav-link {
+      font-size: 14px;
+      color: var(--muted);
+      padding: 4px 8px;
+      border-radius: 8px;
+      transition: color 0.14s ease, background 0.14s ease;
+    }
+    .nav-link:hover { color: #f8fafc; background: rgba(255,255,255,0.06); }
+
+    /* ─── Section title ──────────────────────────────────────────────────────── */
+    .projects-hero {
+      padding: 56px 0 40px;
+      border-bottom: 1px solid var(--line);
+    }
+    .projects-hero h1 { font-size: clamp(32px, 5vw, 56px); }
+
+    /* ─── Fade-in animations ─────────────────────────────────────────────────── */
+    .fade-in {
+      opacity: 0;
+      transform: translateY(24px);
+      transition: opacity 0.55s ease, transform 0.55s ease;
+    }
+    .fade-in.visible {
+      opacity: 1;
+      transform: none;
+    }
+
+    /* ─── SEO blocks grid ────────────────────────────────────────────────────── */
+    .seo-grid {
+      display: grid;
+      gap: 28px;
+      margin-top: 32px;
+    }
+    .seo-block {
+      border-radius: var(--radius);
+      padding: 32px;
+      background: rgba(15, 23, 42, 0.7);
+      border: 1px solid var(--line);
+      box-shadow: var(--shadow);
+      backdrop-filter: blur(10px);
+    }
+    .seo-block-header {
+      display: flex;
+      align-items: flex-start;
+      gap: 16px;
+      margin-bottom: 16px;
+    }
+    .seo-icon {
+      font-size: 32px;
+      line-height: 1;
+      flex-shrink: 0;
+    }
+    .seo-block h3 {
+      font-size: clamp(18px, 2.5vw, 24px);
+      margin-bottom: 6px;
+    }
+    .seo-desc {
+      color: var(--muted);
+      font-size: 15px;
+      line-height: 1.72;
+      margin: 0 0 24px;
+    }
+
+    /* ─── Keyword clusters / progress bars ──────────────────────────────────── */
+    .cluster-bars { display: grid; gap: 12px; }
+    .cluster-row { display: grid; gap: 6px; }
+    .cluster-label {
+      display: flex;
+      justify-content: space-between;
+      font-size: 13px;
+      color: #cbd5e1;
+    }
+    .cluster-label span:last-child { color: var(--accent); font-weight: 600; }
+    .bar-track {
+      height: 8px;
+      background: rgba(255,255,255,0.06);
+      border-radius: 999px;
+      overflow: hidden;
+    }
+    .bar-fill {
+      height: 100%;
+      border-radius: 999px;
+      background: linear-gradient(90deg, var(--accent), #22d3ee);
+      width: 0;
+      transition: width 1s ease 0.3s;
+    }
+    .visible .bar-fill { width: var(--w); }
+
+    .kw-stats {
+      display: flex;
+      gap: 16px;
+      flex-wrap: wrap;
+      margin-top: 20px;
+    }
+    .kw-stat {
+      background: rgba(52, 211, 153, 0.1);
+      border: 1px solid var(--line-strong);
+      border-radius: 12px;
+      padding: 12px 18px;
+      text-align: center;
+    }
+    .kw-stat-value { font-size: 22px; font-weight: 700; color: var(--accent); display: block; }
+    .kw-stat-label { font-size: 12px; color: var(--muted); }
+
+    /* ─── Position table ─────────────────────────────────────────────────────── */
+    .pos-table { width: 100%; border-collapse: collapse; margin-top: 0; font-size: 14px; }
+    .pos-table th {
+      text-align: left;
+      padding: 8px 12px;
+      color: var(--muted);
+      font-weight: 500;
+      font-size: 12px;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      border-bottom: 1px solid var(--line);
+    }
+    .pos-table td {
+      padding: 10px 12px;
+      border-bottom: 1px solid rgba(30,41,59,0.5);
+      color: #cbd5e1;
+    }
+    .pos-table tr:last-child td { border-bottom: none; }
+    .pos-before { color: #ef4444; font-weight: 600; }
+    .pos-after { color: var(--accent); font-weight: 700; }
+    .pos-arrow { color: var(--muted); }
+    .pos-delta {
+      color: var(--accent);
+      font-size: 12px;
+      font-weight: 700;
+      background: rgba(52,211,153,0.12);
+      padding: 2px 8px;
+      border-radius: 999px;
+    }
+
+    /* ─── Checklist ──────────────────────────────────────────────────────────── */
+    .checklist { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-top: 0; }
+    .check-item {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      padding: 12px 14px;
+      background: rgba(2,6,23,0.6);
+      border: 1px solid var(--line);
+      border-radius: 12px;
+      font-size: 14px;
+      color: #cbd5e1;
+    }
+    .check-icon {
+      width: 22px;
+      height: 22px;
+      border-radius: 6px;
+      background: rgba(52,211,153,0.15);
+      border: 1px solid var(--line-strong);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      font-size: 13px;
+      color: var(--accent);
+    }
+
+    /* ─── Metric cards ───────────────────────────────────────────────────────── */
+    .metric-cards { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; }
+    .metric-card {
+      text-align: center;
+      padding: 20px 14px;
+      background: rgba(2,6,23,0.7);
+      border: 1px solid var(--line);
+      border-radius: 18px;
+    }
+    .metric-value {
+      font-size: 28px;
+      font-weight: 700;
+      color: var(--accent);
+      display: block;
+    }
+    .metric-label { font-size: 13px; color: var(--muted); margin-top: 4px; }
+
+    /* ─── Brand mentions / timeline ──────────────────────────────────────────── */
+    .channel-list { display: flex; flex-wrap: wrap; gap: 10px; }
+    .channel-chip {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 8px 14px;
+      border-radius: 999px;
+      background: rgba(15,23,42,0.75);
+      border: 1px solid var(--line);
+      font-size: 13px;
+      color: #cbd5e1;
+      transition: border-color 0.14s ease, color 0.14s ease;
+    }
+    .channel-chip:hover { border-color: var(--line-strong); color: var(--accent); }
+
+    /* ─── AI visibility cards ────────────────────────────────────────────────── */
+    .ai-cards { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; }
+    .ai-card {
+      padding: 20px 16px;
+      background: rgba(2,6,23,0.7);
+      border: 1px solid var(--line);
+      border-radius: 18px;
+      transition: border-color 0.16s ease;
+    }
+    .ai-card:hover { border-color: var(--line-strong); }
+    .ai-card-icon { font-size: 28px; margin-bottom: 10px; }
+    .ai-card h4 { font-size: 16px; margin: 0 0 6px; color: #f8fafc; }
+    .ai-card p { margin: 0; font-size: 13px; color: var(--muted); line-height: 1.6; }
+    .ai-tagline {
+      margin-top: 20px;
+      padding: 14px 18px;
+      background: rgba(52,211,153,0.06);
+      border: 1px solid var(--line-strong);
+      border-radius: 12px;
+      font-size: 14px;
+      color: #86efac;
+      font-style: italic;
+    }
+
+    /* ─── Tools stack ────────────────────────────────────────────────────────── */
+    .tools-grid { display: flex; flex-wrap: wrap; gap: 10px; }
+    .tool-badge {
+      padding: 7px 14px;
+      border-radius: 999px;
+      background: rgba(15,23,42,0.8);
+      border: 1px solid var(--line);
+      font-size: 13px;
+      color: #cbd5e1;
+      font-weight: 500;
+      transition: border-color 0.14s ease, color 0.14s ease;
+    }
+    .tool-badge:hover { border-color: var(--line-strong); color: var(--accent); }
+    .tool-badge.primary {
+      background: rgba(52,211,153,0.08);
+      border-color: rgba(52,211,153,0.25);
+      color: #86efac;
+    }
+    .tools-group { display: grid; gap: 12px; margin-top: 0; }
+    .tools-group-label {
+      font-size: 11px;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-bottom: 4px;
+    }
+
+    /* ─── Screenshot / lightbox button ──────────────────────────────────────── */
+    .proof-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      margin-top: 20px;
+      padding: 10px 18px;
+      border-radius: 12px;
+      border: 1px solid var(--line);
+      background: rgba(2,6,23,0.6);
+      color: var(--muted);
+      font-size: 13px;
+      font-family: inherit;
+      cursor: pointer;
+      transition: border-color 0.14s ease, color 0.14s ease, background 0.14s ease;
+    }
+    .proof-btn:hover {
+      border-color: var(--line-strong);
+      color: var(--accent);
+      background: rgba(52,211,153,0.06);
+    }
+
+    /* ─── Lightbox ───────────────────────────────────────────────────────────── */
+    #lightbox {
+      display: none;
+      position: fixed;
+      inset: 0;
+      z-index: 1000;
+      background: rgba(0,0,0,0.88);
+      align-items: center;
+      justify-content: center;
+      padding: 20px;
+    }
+    #lightbox.open { display: flex; }
+    #lightbox img {
+      max-width: 90vw;
+      max-height: 88vh;
+      border-radius: 14px;
+      object-fit: contain;
+      box-shadow: 0 32px 80px rgba(0,0,0,0.7);
+    }
+    #lightbox-close {
+      position: fixed;
+      top: 20px;
+      right: 24px;
+      background: rgba(255,255,255,0.1);
+      border: 1px solid rgba(255,255,255,0.15);
+      color: #f8fafc;
+      font-size: 24px;
+      width: 44px;
+      height: 44px;
+      border-radius: 12px;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: inherit;
+      transition: background 0.14s ease;
+    }
+    #lightbox-close:hover { background: rgba(255,255,255,0.18); }
+
+    /* ─── Responsive tweaks ──────────────────────────────────────────────────── */
+    @media (max-width: 900px) {
+      .metric-cards { grid-template-columns: 1fr 1fr; }
+      .ai-cards { grid-template-columns: 1fr 1fr; }
+      .checklist { grid-template-columns: 1fr; }
+    }
+    @media (max-width: 600px) {
+      .seo-block { padding: 22px 18px; }
+      .metric-cards { grid-template-columns: 1fr 1fr; }
+      .ai-cards { grid-template-columns: 1fr; }
+      .checklist { grid-template-columns: 1fr; }
+      .kw-stats { gap: 10px; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ─── Sticky nav ──────────────────────────────────────────────────────── -->
+  <nav class="projects-nav">
+    <div class="container">
+      <a class="nav-back" href="index.html">&#8592; Назад к портфолио</a>
+      <span class="nav-divider"></span>
+      <a class="nav-link" href="#games">🎮 Игровые проекты</a>
+      <a class="nav-link" href="#seo">🔍 SEO Портфолио</a>
+    </div>
+  </nav>
+
+  <!-- ─── Hero ────────────────────────────────────────────────────────────── -->
+  <header class="projects-hero">
+    <div class="container">
+      <div class="pill">Портфолио проектов</div>
+      <h1>Игровые проекты<br>&amp; SEO портфолио</h1>
+      <p class="lead">Видео-демо игровых проектов и кейсы по SEO-продвижению — crypto, fintech, gaming.</p>
+    </div>
+  </header>
+
+  <main>
+
+    <!-- ═══════════════════════════════════════════════════════════════════════
+         SECTION 1 — Game Projects Demo
+    ════════════════════════════════════════════════════════════════════════ -->
+    <section id="games" class="section">
+      <div class="container">
+        <div class="section-head">
+          <div>
+            <h2>Game Projects Demo</h2>
+            <p class="section-copy">Видео-демонстрации игровых проектов — геймплей, UI, механики.</p>
+          </div>
+        </div>
+
+        <div class="video-grid">
+
+          <!-- COE — Cards of Eternity -->
+          <div class="yt-embed fade-in" data-vid="cqIJiBtJeJY">
+            <img
+              class="yt-thumb"
+              src="https://i.ytimg.com/vi/cqIJiBtJeJY/hqdefault.jpg"
+              alt="COE — Cards of Eternity"
+              loading="lazy"
+            />
+            <button class="yt-play" aria-label="Play COE — Cards of Eternity">
+              <svg viewBox="0 0 68 48" width="68" height="48"><path d="M66.5 7.7A8.5 8.5 0 0 0 60.7 2C55.4.5 34 .5 34 .5S12.6.5 7.3 2A8.5 8.5 0 0 0 1.5 7.7C0 13 0 24 0 24s0 11 1.5 16.3A8.5 8.5 0 0 0 7.3 46C12.6 47.5 34 47.5 34 47.5s21.4 0 26.7-1.5a8.5 8.5 0 0 0 5.8-5.7C68 35 68 24 68 24s0-11-1.5-16.3z" fill="#f00"/><path d="M27 34l18-10-18-10v20z" fill="#fff"/></svg>
+            </button>
+            <div class="yt-title">COE — Cards of Eternity</div>
+          </div>
+
+          <!-- Puzzle Royal -->
+          <div class="yt-embed fade-in" data-vid="nvs7tMlez0s">
+            <img
+              class="yt-thumb"
+              src="https://i.ytimg.com/vi/nvs7tMlez0s/hqdefault.jpg"
+              alt="Puzzle Royal"
+              loading="lazy"
+            />
+            <button class="yt-play" aria-label="Play Puzzle Royal">
+              <svg viewBox="0 0 68 48" width="68" height="48"><path d="M66.5 7.7A8.5 8.5 0 0 0 60.7 2C55.4.5 34 .5 34 .5S12.6.5 7.3 2A8.5 8.5 0 0 0 1.5 7.7C0 13 0 24 0 24s0 11 1.5 16.3A8.5 8.5 0 0 0 7.3 46C12.6 47.5 34 47.5 34 47.5s21.4 0 26.7-1.5a8.5 8.5 0 0 0 5.8-5.7C68 35 68 24 68 24s0-11-1.5-16.3z" fill="#f00"/><path d="M27 34l18-10-18-10v20z" fill="#fff"/></svg>
+            </button>
+            <div class="yt-title">Puzzle Royal</div>
+          </div>
+
+          <!-- Berserk -->
+          <div class="yt-embed fade-in" data-vid="2jdFHCBersM">
+            <img
+              class="yt-thumb"
+              src="https://i.ytimg.com/vi/2jdFHCBersM/hqdefault.jpg"
+              alt="Berserk: The Cataclysm"
+              loading="lazy"
+            />
+            <button class="yt-play" aria-label="Play Berserk: The Cataclysm" data-list="PLIGFTTG0_MxZULLSz7krz0E_YbxHJ3Foy">
+              <svg viewBox="0 0 68 48" width="68" height="48"><path d="M66.5 7.7A8.5 8.5 0 0 0 60.7 2C55.4.5 34 .5 34 .5S12.6.5 7.3 2A8.5 8.5 0 0 0 1.5 7.7C0 13 0 24 0 24s0 11 1.5 16.3A8.5 8.5 0 0 0 7.3 46C12.6 47.5 34 47.5 34 47.5s21.4 0 26.7-1.5a8.5 8.5 0 0 0 5.8-5.7C68 35 68 24 68 24s0-11-1.5-16.3z" fill="#f00"/><path d="M27 34l18-10-18-10v20z" fill="#fff"/></svg>
+            </button>
+            <div class="yt-title">Berserk: The Cataclysm</div>
+          </div>
+
+          <!-- Slots -->
+          <div class="yt-embed fade-in" data-vid="3GOrsbXuk2I">
+            <img
+              class="yt-thumb"
+              src="https://i.ytimg.com/vi/3GOrsbXuk2I/hqdefault.jpg"
+              alt="Slots — Casino Game"
+              loading="lazy"
+            />
+            <button class="yt-play" aria-label="Play Slots — Casino Game" data-list="PLIGFTTG0_MxZULLSz7krz0E_YbxHJ3Foy">
+              <svg viewBox="0 0 68 48" width="68" height="48"><path d="M66.5 7.7A8.5 8.5 0 0 0 60.7 2C55.4.5 34 .5 34 .5S12.6.5 7.3 2A8.5 8.5 0 0 0 1.5 7.7C0 13 0 24 0 24s0 11 1.5 16.3A8.5 8.5 0 0 0 7.3 46C12.6 47.5 34 47.5 34 47.5s21.4 0 26.7-1.5a8.5 8.5 0 0 0 5.8-5.7C68 35 68 24 68 24s0-11-1.5-16.3z" fill="#f00"/><path d="M27 34l18-10-18-10v20z" fill="#fff"/></svg>
+            </button>
+            <div class="yt-title">Slots — Casino Game</div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ═══════════════════════════════════════════════════════════════════════
+         SECTION 2 — SEO Portfolio
+    ════════════════════════════════════════════════════════════════════════ -->
+    <section id="seo" class="section" style="padding-top:0;">
+      <div class="container">
+        <div class="section-head">
+          <div>
+            <h2>SEO Портфолио</h2>
+            <p class="section-copy">Комплексное SEO-продвижение: от семантики до AI-visibility. Кейсы для crypto, fintech, gaming.</p>
+          </div>
+        </div>
+
+        <div class="seo-grid">
+
+          <!-- ── Block 1: Keyword Research ────────────────────────────────── -->
+          <div class="seo-block fade-in">
+            <div class="seo-block-header">
+              <span class="seo-icon">🔍</span>
+              <div>
+                <h3>Семантическое ядро / Keyword Research</h3>
+              </div>
+            </div>
+            <p class="seo-desc">Сбор и кластеризация ключевых запросов для органического продвижения. Работа с Ahrefs, SEMrush, Key Collector. Результат: структурированное семантическое ядро из 1200+ ключей в 15 кластерах.</p>
+
+            <div class="cluster-bars">
+              <div class="cluster-row">
+                <div class="cluster-label"><span>Брендовые запросы</span><span>420 ключей</span></div>
+                <div class="bar-track"><div class="bar-fill" style="--w:85%"></div></div>
+              </div>
+              <div class="cluster-row">
+                <div class="cluster-label"><span>Транзакционные</span><span>310 ключей</span></div>
+                <div class="bar-track"><div class="bar-fill" style="--w:63%"></div></div>
+              </div>
+              <div class="cluster-row">
+                <div class="cluster-label"><span>Коммерческие</span><span>270 ключей</span></div>
+                <div class="bar-track"><div class="bar-fill" style="--w:55%"></div></div>
+              </div>
+              <div class="cluster-row">
+                <div class="cluster-label"><span>Информационные</span><span>200 ключей</span></div>
+                <div class="bar-track"><div class="bar-fill" style="--w:40%"></div></div>
+              </div>
+            </div>
+
+            <div class="kw-stats">
+              <div class="kw-stat"><span class="kw-stat-value">1200+</span><span class="kw-stat-label">ключевых запросов</span></div>
+              <div class="kw-stat"><span class="kw-stat-value">15</span><span class="kw-stat-label">кластеров</span></div>
+              <div class="kw-stat"><span class="kw-stat-value">4</span><span class="kw-stat-label">языка / рынка</span></div>
+            </div>
+
+            <button class="proof-btn" onclick="openLightbox('SEO keywords.png')">📸 Смотреть результат →</button>
+          </div>
+
+          <!-- ── Block 2: Position Tracking ──────────────────────────────── -->
+          <div class="seo-block fade-in">
+            <div class="seo-block-header">
+              <span class="seo-icon">📊</span>
+              <div>
+                <h3>Мониторинг и анализ позиций</h3>
+              </div>
+            </div>
+            <p class="seo-desc">Еженедельный трекинг позиций в Google и Яндекс. Инструменты: Ahrefs, Яндекс.Вебмастер, Google Search Console. Отчёты по динамике роста и рекомендации по коррекции стратегии.</p>
+
+            <div style="overflow-x:auto;">
+              <table class="pos-table">
+                <thead>
+                  <tr>
+                    <th>Запрос</th>
+                    <th>До</th>
+                    <th></th>
+                    <th>После</th>
+                    <th>Δ</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>crypto wallet app</td>
+                    <td class="pos-before">68</td>
+                    <td class="pos-arrow">→</td>
+                    <td class="pos-after">4</td>
+                    <td><span class="pos-delta">+64</span></td>
+                  </tr>
+                  <tr>
+                    <td>defi platform review</td>
+                    <td class="pos-before">82</td>
+                    <td class="pos-arrow">→</td>
+                    <td class="pos-after">7</td>
+                    <td><span class="pos-delta">+75</span></td>
+                  </tr>
+                  <tr>
+                    <td>buy usdt online</td>
+                    <td class="pos-before">55</td>
+                    <td class="pos-arrow">→</td>
+                    <td class="pos-after">3</td>
+                    <td><span class="pos-delta">+52</span></td>
+                  </tr>
+                  <tr>
+                    <td>neobank fintech</td>
+                    <td class="pos-before">90</td>
+                    <td class="pos-arrow">→</td>
+                    <td class="pos-after">9</td>
+                    <td><span class="pos-delta">+81</span></td>
+                  </tr>
+                  <tr>
+                    <td>mobile trading app</td>
+                    <td class="pos-before">73</td>
+                    <td class="pos-arrow">→</td>
+                    <td class="pos-after">5</td>
+                    <td><span class="pos-delta">+68</span></td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+
+            <div style="display:flex;gap:10px;flex-wrap:wrap;margin-top:16px;">
+              <button class="proof-btn" onclick="openLightbox('Seo positions yandex- Google \u0422\u0430\u0431\u043b\u0438\u0446\u044b \u2014 Mozilla .png')">📸 Позиции Яндекс/Google →</button>
+              <button class="proof-btn" onclick="openLightbox('SEO to top.jpg')">📸 Вывод в ТОП →</button>
+            </div>
+          </div>
+
+          <!-- ── Block 3: Content Optimization ───────────────────────────── -->
+          <div class="seo-block fade-in">
+            <div class="seo-block-header">
+              <span class="seo-icon">✍️</span>
+              <div>
+                <h3>Оптимизация контента</h3>
+              </div>
+            </div>
+            <p class="seo-desc">Технический и контентный аудит, оптимизация мета-тегов, структуры страниц, внутренней перелинковки. Улучшение показателей Core Web Vitals и Page Speed.</p>
+
+            <div class="checklist">
+              <div class="check-item"><div class="check-icon">✓</div>Title &amp; Description</div>
+              <div class="check-item"><div class="check-icon">✓</div>H1–H6 структура</div>
+              <div class="check-item"><div class="check-icon">✓</div>Internal Links</div>
+              <div class="check-item"><div class="check-icon">✓</div>Schema.org / JSON-LD</div>
+              <div class="check-item"><div class="check-icon">✓</div>Page Speed &amp; CWV</div>
+              <div class="check-item"><div class="check-icon">✓</div>Image alt / WebP</div>
+              <div class="check-item"><div class="check-icon">✓</div>Canonical URLs</div>
+              <div class="check-item"><div class="check-icon">✓</div>Mobile-first index</div>
+            </div>
+
+            <div style="display:flex;gap:10px;flex-wrap:wrap;margin-top:16px;">
+              <button class="proof-btn" onclick="openLightbox('SEO pruf 2.png')">📸 Результаты аудита →</button>
+              <button class="proof-btn" onclick="openLightbox('SEO google pruf.png')">📸 Позиции Google →</button>
+            </div>
+          </div>
+
+          <!-- ── Block 4: Crypto & Fintech SEO ───────────────────────────── -->
+          <div class="seo-block fade-in">
+            <div class="seo-block-header">
+              <span class="seo-icon">💎</span>
+              <div>
+                <h3>SEO для Crypto &amp; Fintech</h3>
+              </div>
+            </div>
+            <p class="seo-desc">Продвижение в нише crypto, DeFi, fintech — с учётом особенностей Google Ads Grant и ограничений тематики. Рост органического трафика ×4, конверсий ×2.</p>
+
+            <div class="metric-cards">
+              <div class="metric-card">
+                <span class="metric-value">×4</span>
+                <div class="metric-label">Organic traffic</div>
+              </div>
+              <div class="metric-card">
+                <span class="metric-value">×2</span>
+                <div class="metric-label">Conversion rate</div>
+              </div>
+              <div class="metric-card">
+                <span class="metric-value">4.6★</span>
+                <div class="metric-label">Google Play rating</div>
+              </div>
+            </div>
+
+            <div style="display:flex;gap:10px;flex-wrap:wrap;margin-top:16px;">
+              <button class="proof-btn" onclick="openLightbox('SEO pruf crypto 3.png')">📸 Крипто позиции →</button>
+              <button class="proof-btn" onclick="openLightbox('SEO pruf crypto ru.png')">📸 Крипто RU →</button>
+              <button class="proof-btn" onclick="openLightbox('Ads grant campaign.png')">📸 Ads Grant →</button>
+            </div>
+          </div>
+
+          <!-- ── Block 5: Brand Mentions ──────────────────────────────────── -->
+          <div class="seo-block fade-in">
+            <div class="seo-block-header">
+              <span class="seo-icon">🌐</span>
+              <div>
+                <h3>Повышение упоминаемости бренда</h3>
+              </div>
+            </div>
+            <p class="seo-desc">Работа с внешними ссылками, гостевыми публикациями, PR в медиа и тематических сообществах. Присутствие бренда на релевантных площадках для роста доменного авторитета.</p>
+
+            <div class="channel-list">
+              <span class="channel-chip">✈️ Telegram</span>
+              <span class="channel-chip">✍️ Medium</span>
+              <span class="channel-chip">₿ Bitcointalk</span>
+              <span class="channel-chip">▶️ YouTube</span>
+              <span class="channel-chip">💼 LinkedIn</span>
+              <span class="channel-chip">📰 CoinTelegraph</span>
+              <span class="channel-chip">📰 CryptoSlate</span>
+              <span class="channel-chip">💬 Reddit</span>
+              <span class="channel-chip">📱 App Store</span>
+              <span class="channel-chip">🤖 ProductHunt</span>
+              <span class="channel-chip">🌍 Quora</span>
+              <span class="channel-chip">📖 Habr</span>
+            </div>
+
+            <div style="display:flex;gap:10px;flex-wrap:wrap;margin-top:16px;">
+              <button class="proof-btn" onclick="openLightbox('Monosnap New fintech website  \u2014 Sources, summary \u2014 Yandex.Me.png')">📸 Fintech — источники трафика →</button>
+              <button class="proof-btn" onclick="openLightbox('Monosnap Stimulus - Sources, summary - Yandex.Metr.png')">📸 Stimulus — каналы →</button>
+            </div>
+          </div>
+
+          <!-- ── Block 6: AI Visibility ────────────────────────────────────── -->
+          <div class="seo-block fade-in">
+            <div class="seo-block-header">
+              <span class="seo-icon">🤖</span>
+              <div>
+                <h3>Видимость в ИИ-системах</h3>
+              </div>
+            </div>
+            <p class="seo-desc">Новое направление — оптимизация контента для ChatGPT, Perplexity, Claude, Gemini (т.н. GEO — Generative Engine Optimization). Структурирование контента для LLM-ответов.</p>
+
+            <div class="ai-cards">
+              <div class="ai-card">
+                <div class="ai-card-icon">🟢</div>
+                <h4>ChatGPT</h4>
+                <p>Оптимизация под формат ответов GPT-4o: FAQ-структуры, авторитетные источники, цитируемые данные.</p>
+              </div>
+              <div class="ai-card">
+                <div class="ai-card-icon">🔵</div>
+                <h4>Perplexity</h4>
+                <p>Работа с entity-based SEO, упоминания в веб-источниках, которые индексирует Perplexity AI.</p>
+              </div>
+              <div class="ai-card">
+                <div class="ai-card-icon">🟠</div>
+                <h4>Claude / Gemini</h4>
+                <p>Контент-маркетинг под LLM-контекст: структура, данные, E-E-A-T, цитируемость в AI-ответах.</p>
+              </div>
+            </div>
+
+            <div class="ai-tagline">
+              💡 Ваш бренд должен упоминаться в ответах ИИ-ассистентов — это новый SEO.
+            </div>
+          </div>
+
+          <!-- ── Block 7: Tools Stack ──────────────────────────────────────── -->
+          <div class="seo-block fade-in">
+            <div class="seo-block-header">
+              <span class="seo-icon">🛠️</span>
+              <div>
+                <h3>Инструменты и стек</h3>
+              </div>
+            </div>
+            <p class="seo-desc">Полный стек инструментов для комплексного SEO-продвижения — от технического аудита до аналитики и AI-мониторинга.</p>
+
+            <div class="tools-group">
+              <div>
+                <div class="tools-group-label">SEO / Аналитика</div>
+                <div class="tools-grid">
+                  <span class="tool-badge primary">Ahrefs</span>
+                  <span class="tool-badge primary">SEMrush</span>
+                  <span class="tool-badge">Screaming Frog</span>
+                  <span class="tool-badge">Key Collector</span>
+                  <span class="tool-badge">Google Search Console</span>
+                  <span class="tool-badge">Яндекс.Вебмастер</span>
+                </div>
+              </div>
+              <div>
+                <div class="tools-group-label">Веб-аналитика</div>
+                <div class="tools-grid">
+                  <span class="tool-badge primary">Google Analytics 4</span>
+                  <span class="tool-badge primary">Yandex Metrica</span>
+                  <span class="tool-badge">AppMetrica</span>
+                  <span class="tool-badge">Amplitude</span>
+                  <span class="tool-badge">Mixpanel</span>
+                </div>
+              </div>
+              <div>
+                <div class="tools-group-label">AI / GEO-оптимизация</div>
+                <div class="tools-grid">
+                  <span class="tool-badge primary">ChatGPT</span>
+                  <span class="tool-badge primary">Claude</span>
+                  <span class="tool-badge primary">Perplexity</span>
+                  <span class="tool-badge">Gemini</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+        </div><!-- /seo-grid -->
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ─── Footer ──────────────────────────────────────────────────────────── -->
+  <footer class="section footer-line">
+    <div class="container">
+      <div style="display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:16px;">
+        <div>
+          <h2 style="font-size:clamp(20px,3vw,28px);">Roman Mironichev</h2>
+          <p class="section-copy" style="margin-top:6px;">Senior TPM · Head of PMO · SEO &amp; Growth</p>
+        </div>
+        <div style="display:flex;gap:12px;flex-wrap:wrap;">
+          <a class="btn btn-secondary" href="index.html">← Главное портфолио</a>
+          <a class="btn btn-primary" href="mailto:tocryptopostman@gmail.com">Написать</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- ─── Lightbox overlay ─────────────────────────────────────────────────── -->
+  <div id="lightbox" role="dialog" aria-modal="true" aria-label="Screenshot preview">
+    <button id="lightbox-close" aria-label="Close preview" onclick="closeLightbox()">✕</button>
+    <img id="lightbox-img" src="" alt="SEO screenshot proof">
+  </div>
+
+  <script>
+    /* ── YouTube lazy embed ────────────────────────────────────────────────── */
+    document.querySelectorAll('.yt-embed[data-vid]').forEach(embed => {
+      const vid = embed.dataset.vid;
+      const btn = embed.querySelector('.yt-play');
+      if (!btn) return;
+      btn.addEventListener('click', () => {
+        const list = btn.dataset.list;
+        let src = `https://www.youtube.com/embed/${vid}?autoplay=1&rel=0`;
+        if (list) src += `&list=${list}`;
+        const iframe = document.createElement('iframe');
+        iframe.src = src;
+        iframe.allow = 'autoplay; encrypted-media; picture-in-picture';
+        iframe.allowFullscreen = true;
+        iframe.title = embed.querySelector('.yt-title')?.textContent || 'Video';
+        embed.innerHTML = '';
+        embed.appendChild(iframe);
+      });
+    });
+
+    /* ── Lightbox ──────────────────────────────────────────────────────────── */
+    function openLightbox(src) {
+      const lb = document.getElementById('lightbox');
+      const img = document.getElementById('lightbox-img');
+      img.src = encodeURIComponent(src);
+      img.alt = src;
+      lb.classList.add('open');
+      document.body.style.overflow = 'hidden';
+    }
+    function closeLightbox() {
+      const lb = document.getElementById('lightbox');
+      lb.classList.remove('open');
+      document.getElementById('lightbox-img').src = '';
+      document.body.style.overflow = '';
+    }
+    document.getElementById('lightbox').addEventListener('click', function(e) {
+      if (e.target === this) closeLightbox();
+    });
+    document.addEventListener('keydown', function(e) {
+      if (e.key === 'Escape') closeLightbox();
+    });
+
+    /* ── Intersection Observer fade-in ─────────────────────────────────────── */
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.12 });
+
+    document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+  </script>
+</body>
+</html>
