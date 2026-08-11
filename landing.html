@@ -42,10 +42,32 @@
     .btn-primary:hover { background:#dedede; }
     .about-section { position:relative; min-height:100svh; display:flex; align-items:center; overflow:hidden; border-top:1px solid rgba(255,255,255,.12); background:#070809; }
     .about-section::before { content:""; position:absolute; width:620px; height:620px; right:-240px; top:10%; border-radius:50%; background:rgba(39,255,151,.09); filter:blur(120px); pointer-events:none; }
-    .about-grid { position:relative; display:flex; align-items:center; justify-content:center; padding-top:110px; padding-bottom:110px; }
-    .about-copy { width:min(100%,980px); }
-    .about-copy > p { margin:0; color:#d1d3d1; font-size:clamp(1.25rem,2vw,2rem); line-height:1.65; }
-    .about-copy > p + p { margin-top:28px; }
+    .about-grid { position:relative; display:grid; grid-template-columns:minmax(260px,.7fr) minmax(420px,1.3fr); gap:clamp(50px,9vw,150px); padding-top:110px; padding-bottom:110px; }
+    .section-mark { margin:0; color:#6f7471; font-size:.76rem; letter-spacing:.18em; text-transform:uppercase; }
+    .section-heading { margin:22px 0 0; font-size:clamp(2.8rem,5vw,5.8rem); line-height:.98; letter-spacing:-.05em; font-weight:500; text-transform:uppercase; }
+    .about-copy > p { margin:0; color:#b8bcba; font-size:clamp(1.08rem,1.55vw,1.5rem); line-height:1.7; }
+    .about-copy > p:first-child { color:#f1f2f0; font-size:clamp(1.3rem,2vw,2rem); }
+    .about-copy > p + p { margin-top:30px; }
+    .projects-section,.stack-section { position:relative; border-top:1px solid rgba(255,255,255,.12); background:#050607; }
+    .section-head { display:flex; align-items:flex-end; justify-content:space-between; gap:30px; padding-top:110px; padding-bottom:52px; }
+    .section-head .section-heading { max-width:760px; }
+    .section-note { max-width:410px; margin:0 0 8px; color:#888d8a; font-size:.86rem; line-height:1.6; letter-spacing:.04em; }
+    .project-gallery { display:grid; grid-template-columns:repeat(12,1fr); gap:22px; padding-bottom:120px; }
+    .project-card { position:relative; grid-column:span 4; min-height:420px; overflow:hidden; margin:0; border:1px solid rgba(255,255,255,.14); background:#111; }
+    .project-card:nth-child(1),.project-card:nth-child(6) { grid-column:span 8; }
+    .project-card img { width:100%; height:100%; display:block; object-fit:cover; transition:transform .6s ease,filter .4s; }
+    .project-card:hover img { transform:scale(1.035); filter:brightness(.72); }
+    .project-card figcaption { position:absolute; inset:auto 0 0; display:flex; justify-content:space-between; gap:20px; padding:60px 24px 22px; background:linear-gradient(transparent,rgba(0,0,0,.9)); text-transform:uppercase; letter-spacing:.1em; }
+    .project-card strong { font-size:.85rem; font-weight:500; }
+    .project-card span { color:#a5aaa7; font-size:.68rem; }
+    .stack-section { min-height:100svh; display:flex; align-items:center; overflow:hidden; background:radial-gradient(circle at 15% 70%,rgba(87,56,190,.14),transparent 34%),#08090a; }
+    .stack-layout { display:grid; grid-template-columns:minmax(230px,.55fr) minmax(500px,1.45fr); gap:clamp(60px,10vw,180px); padding-top:110px; padding-bottom:110px; }
+    .stack-list { display:flex; flex-wrap:wrap; align-content:center; gap:10px 14px; }
+    .stack-list span { display:inline-block; color:#d8dad8; font-size:clamp(1.25rem,2.25vw,2.45rem); line-height:1.15; letter-spacing:-.025em; }
+    .stack-list span::after { content:" /"; color:#3f4541; }
+    .contact-section { border-top:1px solid rgba(255,255,255,.12); background:#030405; }
+    .contact-inner { min-height:52vh; display:flex; align-items:center; justify-content:space-between; gap:50px; padding-top:90px; padding-bottom:90px; }
+    .contact-link { color:#fff; font-size:clamp(1.5rem,3vw,3.6rem); letter-spacing:-.04em; text-decoration:none; border-bottom:1px solid #777; }
     @media (max-width:1150px) {
       .shell { width:min(100% - 48px,1820px); }
       nav { gap:25px; }
@@ -53,6 +75,8 @@
       .copy { width:62%; }
       h1 { font-size:clamp(3.5rem,7vw,5.5rem); }
       .btn { min-width:190px; }
+      .project-card { grid-column:span 6; }
+      .project-card:nth-child(1),.project-card:nth-child(6) { grid-column:span 6; }
     }
     @media (max-width:800px) {
       .page { min-height:100svh; }
@@ -74,8 +98,14 @@
       .actions { margin-top:30px; gap:10px; }
       .btn { flex:1 1 145px; min-width:0; min-height:50px; padding:0 14px; font-size:.66rem; }
       .btn-primary { flex-basis:100%; }
-      .about-grid { padding-top:80px; padding-bottom:80px; }
+      .about-grid,.stack-layout { grid-template-columns:1fr; gap:42px; padding-top:80px; padding-bottom:80px; }
       .about-copy > p { font-size:1rem; }
+      .about-copy > p:first-child { font-size:1.2rem; }
+      .section-head { align-items:flex-start; flex-direction:column; padding-top:80px; padding-bottom:36px; }
+      .project-gallery { display:block; padding-bottom:80px; }
+      .project-card,.project-card:nth-child(1),.project-card:nth-child(6) { min-height:320px; margin-bottom:14px; }
+      .stack-list span { font-size:1.3rem; }
+      .contact-inner { min-height:45vh; align-items:flex-start; flex-direction:column; justify-content:center; }
     }
   </style>
 </head>
@@ -85,15 +115,15 @@
     <header class="shell">
       <a class="brand" href="landing.html">PERSONAL WEBSITE</a>
       <nav aria-label="Main navigation">
-        <a href="landing.html">Overview</a>
-        <a href="projects.html">Projects</a>
+        <a href="#overview">Overview</a>
+        <a href="#projects">Projects</a>
         <a href="#about">About</a>
-        <a href="index.html#projects">Stack</a>
-        <a href="index.html#contact">Contact</a>
+        <a href="#stack">Stack</a>
+        <a href="#contact">Contact</a>
         <a class="cv-link" href="Mironichev Roman Alexandrovich CV Delivery Manager Senior Project Head Of PMO.pdf" target="_blank" rel="noreferrer">CV ↓</a>
       </nav>
     </header>
-    <main class="hero shell">
+    <main class="hero shell" id="overview">
       <section class="copy" aria-labelledby="hero-title">
         <p class="eyebrow">Hello, I’m</p>
         <h1 id="hero-title">Roman<span>Mironichev</span></h1>
@@ -101,7 +131,7 @@
         <p class="roles">Delivery <i>•</i> Marketing</p>
         <div class="actions">
           <a class="btn btn-primary" href="mailto:tocryptopostman@gmail.com">Contact me&nbsp; →</a>
-          <a class="btn" href="index.html#gallery">View portfolio</a>
+          <a class="btn" href="#projects">View portfolio</a>
           <a class="btn" href="Mironichev Roman Alexandrovich CV Delivery Manager Senior Project Head Of PMO.pdf" download>Download CV&nbsp; ↓</a>
         </div>
       </section>
@@ -109,6 +139,10 @@
   </div>
   <section class="about-section" id="about" aria-label="About">
     <div class="about-grid shell">
+      <div>
+        <p class="section-mark">About / Approach</p>
+        <h2 class="section-heading">Structure.<br>Alignment.<br>Delivery.</h2>
+      </div>
       <div class="about-copy">
         <p>I am most effective in remote environments where there is a need to align stakeholders, structure execution, and move a product from fragmented effort to predictable delivery.</p>
         <p>Strong in cross-functional coordination between business and marketing, product and engineering. Comfortable with startup ambiguity and enterprise-scale governance. I can set up PMO dashboards, backlog discipline, release rhythm and delivery visibility.</p>
@@ -116,5 +150,32 @@
       </div>
     </div>
   </section>
+  <section class="projects-section" id="projects" aria-labelledby="projects-title">
+    <div class="section-head shell">
+      <div><p class="section-mark">Selected work / Media archive</p><h2 class="section-heading" id="projects-title">Projects</h2></div>
+      <p class="section-note">A visual archive of product delivery, PMO systems, fintech, games and growth work.</p>
+    </div>
+    <div class="project-gallery shell">
+      <figure class="project-card"><img src="ClickUP_dashboard.png" alt="ClickUp project delivery dashboard" loading="lazy"><figcaption><strong>PMO Dashboard</strong><span>Delivery visibility</span></figcaption></figure>
+      <figure class="project-card"><img src="Website_neobank.png" alt="Neobank website project" loading="lazy"><figcaption><strong>Neobank</strong><span>Fintech product</span></figcaption></figure>
+      <figure class="project-card"><img src="Game.png" alt="Game development project" loading="lazy"><figcaption><strong>Game Production</strong><span>Product delivery</span></figcaption></figure>
+      <figure class="project-card"><img src="Gant plan.png" alt="Project Gantt plan" loading="lazy"><figcaption><strong>Delivery Planning</strong><span>PMO systems</span></figcaption></figure>
+      <figure class="project-card"><img src="SEO google pruf.png" alt="Google SEO performance report" loading="lazy"><figcaption><strong>SEO Growth</strong><span>Performance</span></figcaption></figure>
+      <figure class="project-card"><img src="Game 3.png" alt="Mobile game project screen" loading="lazy"><figcaption><strong>Mobile Games</strong><span>Portfolio delivery</span></figcaption></figure>
+      <figure class="project-card"><img src="Ads grant campaign.png" alt="Advertising grant campaign results" loading="lazy"><figcaption><strong>Campaign Systems</strong><span>Marketing</span></figcaption></figure>
+      <figure class="project-card"><img src="Road_map_template.png" alt="Product roadmap template" loading="lazy"><figcaption><strong>Product Roadmap</strong><span>Execution rhythm</span></figcaption></figure>
+    </div>
+  </section>
+  <section class="stack-section" id="stack" aria-labelledby="stack-title">
+    <div class="stack-layout shell">
+      <div><p class="section-mark">Working stack / 2026</p><h2 class="section-heading" id="stack-title">Stack</h2></div>
+      <div class="stack-list" aria-label="Professional tools and technologies">
+        <span>Jira</span><span>Confluence</span><span>ClickUp</span><span>Notion</span><span>Slack</span><span>GitHub</span><span>GitLab</span><span>Miro</span><span>Figma</span><span>ChatGPT</span><span>OpenAI API</span><span>Stable Diffusion</span><span>Midjourney</span><span>Agile</span><span>Scrum</span><span>OKR</span><span>SAFe</span><span>PMO Dashboards</span><span>Product Management</span><span>Unity</span><span>C#</span><span>ASP.NET</span><span>PHP</span><span>Go</span><span>SEO</span><span>Web Analytics</span>
+      </div>
+    </div>
+  </section>
+  <footer class="contact-section" id="contact">
+    <div class="contact-inner shell"><div><p class="section-mark">Contact / Remote worldwide</p><h2 class="section-heading">Let’s work<br>together.</h2></div><a class="contact-link" href="mailto:tocryptopostman@gmail.com">tocryptopostman@gmail.com ↗</a></div>
+  </footer>
 </body>
 </html>
