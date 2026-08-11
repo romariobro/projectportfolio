@@ -52,22 +52,29 @@
     .section-head { display:flex; align-items:flex-end; justify-content:space-between; gap:30px; padding-top:110px; padding-bottom:52px; }
     .section-head .section-heading { max-width:760px; }
     .section-note { max-width:410px; margin:0 0 8px; color:#888d8a; font-size:.86rem; line-height:1.6; letter-spacing:.04em; }
-    .project-gallery { display:grid; grid-template-columns:repeat(12,1fr); gap:22px; padding-bottom:120px; }
-    .project-card { position:relative; grid-column:span 4; min-height:420px; overflow:hidden; margin:0; border:1px solid rgba(255,255,255,.14); background:#111; }
-    .project-card:nth-child(1),.project-card:nth-child(6) { grid-column:span 8; }
-    .project-card img { width:100%; height:100%; display:block; object-fit:cover; transition:transform .6s ease,filter .4s; }
-    .project-card:hover img { transform:scale(1.035); filter:brightness(.72); }
+    .project-gallery { display:flex; gap:22px; width:100%; max-width:none; padding:0 max(48px,calc((100vw - 1820px)/2)) 120px; overflow-x:auto; scroll-snap-type:x mandatory; scroll-padding-left:max(48px,calc((100vw - 1820px)/2)); scrollbar-width:thin; scrollbar-color:#737975 #171918; }
+    .project-gallery::-webkit-scrollbar { height:6px; }
+    .project-gallery::-webkit-scrollbar-track { background:#171918; }
+    .project-gallery::-webkit-scrollbar-thumb { background:#737975; }
+    .project-card { position:relative; flex:0 0 calc(100vw - 96px); max-width:1600px; aspect-ratio:16/9; overflow:hidden; margin:0; border:1px solid rgba(255,255,255,.14); background:#111; scroll-snap-align:start; }
+    .project-card img { width:100%; height:100%; display:block; object-fit:contain; background:#0b0d0c; transition:filter .3s ease; }
+    .project-card:hover img { filter:brightness(.78); }
     .project-card figcaption { position:absolute; inset:auto 0 0; display:flex; justify-content:space-between; gap:20px; padding:60px 24px 22px; background:linear-gradient(transparent,rgba(0,0,0,.9)); text-transform:uppercase; letter-spacing:.1em; }
     .project-card strong { font-size:.85rem; font-weight:500; }
     .project-card span { color:#a5aaa7; font-size:.68rem; }
     .stack-section { min-height:100svh; display:flex; align-items:center; overflow:hidden; background:radial-gradient(circle at 15% 70%,rgba(87,56,190,.14),transparent 34%),#08090a; }
     .stack-layout { display:grid; grid-template-columns:minmax(230px,.55fr) minmax(500px,1.45fr); gap:clamp(60px,10vw,180px); padding-top:110px; padding-bottom:110px; }
-    .stack-list { display:flex; flex-wrap:wrap; align-content:center; gap:10px 14px; }
-    .stack-list span { display:inline-block; color:#d8dad8; font-size:clamp(1.25rem,2.25vw,2.45rem); line-height:1.15; letter-spacing:-.025em; }
-    .stack-list span::after { content:" /"; color:#3f4541; }
+    .stack-groups { display:grid; gap:48px; align-content:center; }
+    .stack-group { padding-top:24px; border-top:1px solid rgba(255,255,255,.18); }
+    .stack-group h3 { margin:0 0 24px; color:#71e6aa; font-size:.8rem; font-weight:500; letter-spacing:.18em; text-transform:uppercase; }
+    .stack-items { display:flex; flex-wrap:wrap; gap:10px 14px; }
+    .stack-items span { display:inline-block; color:#d8dad8; font-size:clamp(1.25rem,2.25vw,2.45rem); line-height:1.15; letter-spacing:-.025em; }
+    .stack-items span::after { content:" /"; color:#3f4541; }
     .contact-section { border-top:1px solid rgba(255,255,255,.12); background:#030405; }
     .contact-inner { min-height:52vh; display:flex; align-items:center; justify-content:space-between; gap:50px; padding-top:90px; padding-bottom:90px; }
-    .contact-link { color:#fff; font-size:clamp(1.5rem,3vw,3.6rem); letter-spacing:-.04em; text-decoration:none; border-bottom:1px solid #777; }
+    .contact-links { display:flex; flex-direction:column; align-items:flex-start; gap:18px; }
+    .contact-link { color:#fff; font-size:clamp(1.25rem,2.4vw,2.8rem); letter-spacing:-.04em; text-decoration:none; border-bottom:1px solid #777; transition:color .2s,border-color .2s; }
+    .contact-link:hover { color:#71e6aa; border-color:#71e6aa; }
     @media (max-width:1150px) {
       .shell { width:min(100% - 48px,1820px); }
       nav { gap:25px; }
@@ -75,8 +82,6 @@
       .copy { width:62%; }
       h1 { font-size:clamp(3.5rem,7vw,5.5rem); }
       .btn { min-width:190px; }
-      .project-card { grid-column:span 6; }
-      .project-card:nth-child(1),.project-card:nth-child(6) { grid-column:span 6; }
     }
     @media (max-width:800px) {
       .page { min-height:100svh; }
@@ -102,9 +107,9 @@
       .about-copy > p { font-size:1rem; }
       .about-copy > p:first-child { font-size:1.2rem; }
       .section-head { align-items:flex-start; flex-direction:column; padding-top:80px; padding-bottom:36px; }
-      .project-gallery { display:block; padding-bottom:80px; }
-      .project-card,.project-card:nth-child(1),.project-card:nth-child(6) { min-height:320px; margin-bottom:14px; }
-      .stack-list span { font-size:1.3rem; }
+      .project-gallery { display:flex; gap:14px; padding:0 17px 80px; scroll-padding-left:17px; }
+      .project-card { flex-basis:calc(100vw - 34px); max-width:none; }
+      .stack-items span { font-size:1.3rem; }
       .contact-inner { min-height:45vh; align-items:flex-start; flex-direction:column; justify-content:center; }
     }
   </style>
@@ -128,7 +133,6 @@
         <p class="eyebrow">Hello, I’m</p>
         <h1 id="hero-title">Roman<span>Mironichev</span></h1>
         <div class="rule"></div>
-        <p class="roles">Delivery <i>•</i> Marketing</p>
         <div class="actions">
           <a class="btn btn-primary" href="mailto:tocryptopostman@gmail.com">Contact me&nbsp; →</a>
           <a class="btn" href="#projects">View portfolio</a>
@@ -155,27 +159,67 @@
       <div><p class="section-mark">Selected work / Media archive</p><h2 class="section-heading" id="projects-title">Projects</h2></div>
       <p class="section-note">A visual archive of product delivery, PMO systems, fintech, games and growth work.</p>
     </div>
-    <div class="project-gallery shell">
-      <figure class="project-card"><img src="ClickUP_dashboard.png" alt="ClickUp project delivery dashboard" loading="lazy"><figcaption><strong>PMO Dashboard</strong><span>Delivery visibility</span></figcaption></figure>
-      <figure class="project-card"><img src="Website_neobank.png" alt="Neobank website project" loading="lazy"><figcaption><strong>Neobank</strong><span>Fintech product</span></figcaption></figure>
-      <figure class="project-card"><img src="Game.png" alt="Game development project" loading="lazy"><figcaption><strong>Game Production</strong><span>Product delivery</span></figcaption></figure>
-      <figure class="project-card"><img src="Gant plan.png" alt="Project Gantt plan" loading="lazy"><figcaption><strong>Delivery Planning</strong><span>PMO systems</span></figcaption></figure>
-      <figure class="project-card"><img src="SEO google pruf.png" alt="Google SEO performance report" loading="lazy"><figcaption><strong>SEO Growth</strong><span>Performance</span></figcaption></figure>
-      <figure class="project-card"><img src="Game 3.png" alt="Mobile game project screen" loading="lazy"><figcaption><strong>Mobile Games</strong><span>Portfolio delivery</span></figcaption></figure>
-      <figure class="project-card"><img src="Ads grant campaign.png" alt="Advertising grant campaign results" loading="lazy"><figcaption><strong>Campaign Systems</strong><span>Marketing</span></figcaption></figure>
-      <figure class="project-card"><img src="Road_map_template.png" alt="Product roadmap template" loading="lazy"><figcaption><strong>Product Roadmap</strong><span>Execution rhythm</span></figcaption></figure>
+    <div class="project-gallery" aria-label="Project gallery">
+      <figure class="project-card"><img src="gallery/project-01.webp" alt="ClickUp project delivery dashboard" loading="lazy"><figcaption><strong>PMO Dashboard</strong><span>Delivery visibility</span></figcaption></figure>
+      <figure class="project-card"><img src="gallery/project-02.webp" alt="Neobank website project" loading="lazy"><figcaption><strong>Neobank</strong><span>Fintech product</span></figcaption></figure>
+      <figure class="project-card"><img src="gallery/project-03.webp" alt="Game development project" loading="lazy"><figcaption><strong>Game Production</strong><span>Product delivery</span></figcaption></figure>
+      <figure class="project-card"><img src="gallery/project-04.webp" alt="Project Gantt plan" loading="lazy"><figcaption><strong>Delivery Planning</strong><span>PMO systems</span></figcaption></figure>
+      <figure class="project-card"><img src="gallery/project-05.webp" alt="Google SEO performance report" loading="lazy"><figcaption><strong>SEO Growth</strong><span>Performance</span></figcaption></figure>
+      <figure class="project-card"><img src="gallery/project-06.webp" alt="Mobile game project screen" loading="lazy"><figcaption><strong>Mobile Games</strong><span>Portfolio delivery</span></figcaption></figure>
+      <figure class="project-card"><img src="gallery/project-07.webp" alt="Advertising grant campaign results" loading="lazy"><figcaption><strong>Campaign Systems</strong><span>Marketing</span></figcaption></figure>
+      <figure class="project-card"><img src="gallery/project-08.webp" alt="Product roadmap template" loading="lazy"><figcaption><strong>Product Roadmap</strong><span>Execution rhythm</span></figcaption></figure>
+      <figure class="project-card"><img src="gallery/project-09.webp" alt="Digital product interface" loading="lazy"><figcaption><strong>Digital Product</strong><span>Interface</span></figcaption></figure>
+      <figure class="project-card"><img src="gallery/project-10.webp" alt="Product project screen" loading="lazy"><figcaption><strong>Product Screen</strong><span>Delivery archive</span></figcaption></figure>
+      <figure class="project-card"><img src="gallery/project-11.webp" alt="Web product screen" loading="lazy"><figcaption><strong>Web Product</strong><span>Interface</span></figcaption></figure>
+      <figure class="project-card"><img src="gallery/project-12.webp" alt="Digital campaign banner" loading="lazy"><figcaption><strong>Digital Campaign</strong><span>Creative</span></figcaption></figure>
+      <figure class="project-card"><img src="gallery/project-13.webp" alt="Additional ClickUp dashboard" loading="lazy"><figcaption><strong>PMO Dashboard II</strong><span>Operations</span></figcaption></figure>
+      <figure class="project-card"><img src="gallery/project-14.webp" alt="Project documentation screen" loading="lazy"><figcaption><strong>Documentation</strong><span>Process</span></figcaption></figure>
+      <figure class="project-card"><img src="gallery/project-15.webp" alt="Project workflow documentation" loading="lazy"><figcaption><strong>Workflow</strong><span>Documentation</span></figcaption></figure>
+      <figure class="project-card"><img src="gallery/project-16.webp" alt="Project management document" loading="lazy"><figcaption><strong>Project System</strong><span>Documentation</span></figcaption></figure>
+      <figure class="project-card"><img src="gallery/project-17.webp" alt="Product design frame" loading="lazy"><figcaption><strong>Product Design</strong><span>Prototype</span></figcaption></figure>
+      <figure class="project-card"><img src="gallery/project-18.webp" alt="Game project screen two" loading="lazy"><figcaption><strong>Game Portfolio 02</strong><span>Production</span></figcaption></figure>
+      <figure class="project-card"><img src="gallery/project-19.webp" alt="Game project screen four" loading="lazy"><figcaption><strong>Game Portfolio 04</strong><span>Production</span></figcaption></figure>
+      <figure class="project-card"><img src="gallery/project-20.webp" alt="Game project screen five" loading="lazy"><figcaption><strong>Game Portfolio 05</strong><span>Production</span></figcaption></figure>
+      <figure class="project-card"><img src="gallery/project-21.webp" alt="Game project screen six" loading="lazy"><figcaption><strong>Game Portfolio 06</strong><span>Production</span></figcaption></figure>
+      <figure class="project-card"><img src="gallery/project-22.webp" alt="Game project screen seven" loading="lazy"><figcaption><strong>Game Portfolio 07</strong><span>Production</span></figcaption></figure>
+      <figure class="project-card"><img src="gallery/project-23.webp" alt="Product delivery media" loading="lazy"><figcaption><strong>Delivery Case</strong><span>Archive</span></figcaption></figure>
+      <figure class="project-card"><img src="gallery/project-24.webp" alt="Microsoft Office project screen" loading="lazy"><figcaption><strong>Operations</strong><span>Workspace</span></figcaption></figure>
+      <figure class="project-card"><img src="gallery/project-25.webp" alt="Fintech website analytics" loading="lazy"><figcaption><strong>Fintech Analytics</strong><span>Yandex Metrica</span></figcaption></figure>
+      <figure class="project-card"><img src="gallery/project-26.webp" alt="Stimulus website analytics" loading="lazy"><figcaption><strong>Growth Analytics</strong><span>Traffic</span></figcaption></figure>
+      <figure class="project-card"><img src="gallery/project-27.webp" alt="SEO keyword performance" loading="lazy"><figcaption><strong>SEO Keywords</strong><span>Search growth</span></figcaption></figure>
+      <figure class="project-card"><img src="gallery/project-28.webp" alt="SEO positions report" loading="lazy"><figcaption><strong>Search Positions</strong><span>Yandex / Google</span></figcaption></figure>
+      <figure class="project-card"><img src="gallery/project-29.webp" alt="Additional SEO performance report" loading="lazy"><figcaption><strong>SEO Performance II</strong><span>Growth</span></figcaption></figure>
+      <figure class="project-card"><img src="gallery/project-30.webp" alt="Crypto SEO report" loading="lazy"><figcaption><strong>Crypto SEO</strong><span>International growth</span></figcaption></figure>
+      <figure class="project-card"><img src="gallery/project-31.webp" alt="Russian crypto SEO report" loading="lazy"><figcaption><strong>Crypto SEO RU</strong><span>Regional growth</span></figcaption></figure>
+      <figure class="project-card"><img src="gallery/project-32.webp" alt="SEO ranking result" loading="lazy"><figcaption><strong>SEO to Top II</strong><span>Ranking</span></figcaption></figure>
+      <figure class="project-card"><img src="gallery/project-33.webp" alt="SEO top ranking result" loading="lazy"><figcaption><strong>SEO to Top</strong><span>Ranking</span></figcaption></figure>
+      <figure class="project-card"><img src="gallery/project-34.webp" alt="Project portfolio media" loading="lazy"><figcaption><strong>Project Archive</strong><span>Media</span></figcaption></figure>
     </div>
   </section>
   <section class="stack-section" id="stack" aria-labelledby="stack-title">
     <div class="stack-layout shell">
       <div><p class="section-mark">Working stack / 2026</p><h2 class="section-heading" id="stack-title">Stack</h2></div>
-      <div class="stack-list" aria-label="Professional tools and technologies">
-        <span>Jira</span><span>Confluence</span><span>ClickUp</span><span>Notion</span><span>Slack</span><span>GitHub</span><span>GitLab</span><span>Miro</span><span>Figma</span><span>ChatGPT</span><span>OpenAI API</span><span>Stable Diffusion</span><span>Midjourney</span><span>Agile</span><span>Scrum</span><span>OKR</span><span>SAFe</span><span>PMO Dashboards</span><span>Product Management</span><span>Unity</span><span>C#</span><span>ASP.NET</span><span>PHP</span><span>Go</span><span>SEO</span><span>Web Analytics</span>
+      <div class="stack-groups" aria-label="Professional focus areas">
+        <div class="stack-group">
+          <h3>Delivery</h3>
+          <div class="stack-items"><span>Product development</span><span>Project management</span><span>OKR</span><span>Operations management</span></div>
+        </div>
+        <div class="stack-group">
+          <h3>Marketing</h3>
+          <div class="stack-items"><span>Strategy</span><span>Lead generation</span><span>Complex digital marketing</span></div>
+        </div>
       </div>
     </div>
   </section>
   <footer class="contact-section" id="contact">
-    <div class="contact-inner shell"><div><p class="section-mark">Contact / Remote worldwide</p><h2 class="section-heading">Let’s work<br>together.</h2></div><a class="contact-link" href="mailto:tocryptopostman@gmail.com">tocryptopostman@gmail.com ↗</a></div>
+    <div class="contact-inner shell">
+      <div><p class="section-mark">Contact / Remote worldwide</p><h2 class="section-heading">Let’s work<br>together.</h2></div>
+      <div class="contact-links">
+        <a class="contact-link" href="mailto:tocryptopostman@gmail.com">Email ↗</a>
+        <a class="contact-link" href="https://t.me/romwag" target="_blank" rel="noreferrer">Telegram ↗</a>
+        <a class="contact-link" href="https://linkedin.com/pub/roman-mironichev/14/636/69b/" target="_blank" rel="noreferrer">LinkedIn ↗</a>
+      </div>
+    </div>
   </footer>
 </body>
 </html>
