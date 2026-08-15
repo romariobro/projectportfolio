@@ -413,10 +413,10 @@
     .banner-shell { padding-bottom:72px; }
     .banner-toolbar { display:flex; justify-content:space-between; align-items:end; gap:32px; margin-bottom:24px; }
     .banner-toolbar h3,.video-section-title { margin:8px 0 0; font-size:clamp(1.7rem,3.2vw,3.5rem); line-height:1; letter-spacing:-.04em; text-transform:uppercase; }
-    .banner-controls { display:flex; gap:9px; }
+    .banner-controls { display:none; }
     .banner-control { width:48px; height:48px; border:1px solid rgba(255,255,255,.42); border-radius:50%; background:transparent; color:#fff; cursor:pointer; font-size:1.15rem; transition:background .2s,color .2s; }
     .banner-control:hover { background:#fff; color:#050607; }
-    .banner-track { display:flex; gap:20px; overflow-x:auto; padding:0 0 18px; scroll-snap-type:x mandatory; scroll-behavior:smooth; scrollbar-width:thin; scrollbar-color:#737975 #171918; }
+    .banner-track { display:grid; grid-template-columns:1fr; gap:30px; padding:0; }
     .banner-card { position:relative; flex:0 0 100%; min-height:min(72vh,720px); overflow:hidden; border:1px solid rgba(255,255,255,.16); background:#101311; scroll-snap-align:start; scroll-snap-stop:always; }
     .banner-card img { width:100%; height:100%; min-height:min(72vh,720px); display:block; object-fit:cover; }
     .banner-card.is-proof img { object-fit:contain; background:#f5f6f5; }
@@ -429,8 +429,8 @@
     .video-cases { padding:76px 0 120px; border-top:1px solid rgba(255,255,255,.13); }
     .video-section-head { display:flex; justify-content:space-between; align-items:end; gap:40px; margin-bottom:30px; }
     .video-section-head p { max-width:520px; margin:0; color:#969c98; line-height:1.65; }
-    .video-track { display:flex; gap:18px; overflow-x:auto; padding-bottom:18px; scroll-snap-type:x mandatory; scrollbar-width:thin; scrollbar-color:#727874 #171918; }
-    .video-track .video-card { flex-basis:min(70vw,620px); }
+    .video-track { display:grid; grid-template-columns:1fr; gap:30px; padding-bottom:0; }
+    .video-track .video-card { width:100%; }
     @media (max-width:800px) {
       .banner-shell { padding-bottom:50px; }
       .banner-toolbar,.video-section-head { align-items:flex-start; flex-direction:column; }
@@ -456,14 +456,13 @@
   <section class="projects-section" id="projects" aria-labelledby="projects-title">
     <div class="section-head shell">
       <div><p class="section-mark">Selected work / Product evidence</p><h2 class="section-heading" id="projects-title">Projects</h2></div>
-      <p class="section-note">Eleven selected cases in one banner carousel. Use the arrows or swipe horizontally.</p>
+      <p class="section-note">Eleven selected cases in a vertical project gallery, followed by seven video cases.</p>
     </div>
-    <div class="banner-shell shell" data-carousel>
+    <div class="banner-shell shell">
       <div class="banner-toolbar">
         <div><span class="project-group-kicker">Product · Operations · Growth · Payments</span><h3>Selected project gallery</h3></div>
-        <div class="banner-controls"><button class="banner-control" type="button" data-prev aria-label="Previous project">←</button><button class="banner-control" type="button" data-next aria-label="Next project">→</button></div>
       </div>
-      <div class="banner-track" data-track aria-label="Selected project gallery">
+      <div class="banner-track" aria-label="Selected project gallery">
         <article class="banner-card"><img src="projects-media/transport-payments.webp" alt="Transportation card payment system" loading="eager"><div class="banner-overlay"><span class="banner-index">01 / Payments &amp; Infrastructure</span><h4>Transportation Payment Processing</h4><p>High-load payment platform delivered across Product, Engineering, QA, Architecture, DevOps and Support.</p><div class="banner-metrics"><span>100M+ transactions/day</span><span>40 regions</span><span>40+ core team</span><span>14 releases</span><span>8 features</span></div></div></article>
         <article class="banner-card"><img src="projects-media/chatex-cryptobank.webp" alt="Mobile-first financial platform"><div class="banner-overlay"><span class="banner-index">02 / International FinTech</span><h4>Wallet, payments and transactional services</h4><p>Product, Marketing, Analytics and Support operations connected around acquisition, retention and major releases.</p><div class="banner-metrics"><span>$2.4M raised</span><span>$2M+ daily volume</span><span>30K → 300K users</span><span>10× MAU</span></div></div></article>
         <article class="banner-card"><img src="projects-media/fintech-cryptobank-dark.webp" alt="Financial platform web and mobile product"><div class="banner-overlay"><span class="banner-index">03 / Product &amp; Growth Operations</span><h4>FinTech product system</h4><p>Web, mobile and analytics managed as one operating system for product delivery and organic acquisition.</p><div class="banner-metrics"><span>4× organic traffic</span><span>400+ screens</span><span>70 scenarios</span><span>2,000+ test cases</span></div></div></article>
@@ -486,6 +485,8 @@
         <a class="video-card" href="https://www.youtube.com/watch?v=nvs7tMlez0s" target="_blank" rel="noreferrer"><img src="https://i.ytimg.com/vi/nvs7tMlez0s/hqdefault.jpg" alt="Puzzle Royal product video" loading="lazy"><span class="video-play">▶</span><span class="video-copy"><strong>Puzzle Royal</strong><span>Product Delivery from roadmap and MVP through international launch and LiveOps.</span></span></a>
         <a class="video-card" href="https://www.youtube.com/watch?v=2jdFHCBersM" target="_blank" rel="noreferrer"><img src="https://i.ytimg.com/vi/2jdFHCBersM/hqdefault.jpg" alt="Berserk The Cataclysm product video" loading="lazy"><span class="video-play">▶</span><span class="video-copy"><strong>Berserk: The Cataclysm</strong><span>Portfolio Operations, resource management, dependencies and release coordination.</span></span></a>
         <a class="video-card" href="https://www.youtube.com/watch?v=3GOrsbXuk2I" target="_blank" rel="noreferrer"><img src="https://i.ytimg.com/vi/3GOrsbXuk2I/hqdefault.jpg" alt="Slots product video" loading="lazy"><span class="video-play">▶</span><span class="video-copy"><strong>Slots — Product Demo</strong><span>International product initiative managed within a 150+ product organization.</span></span></a>
+        <a class="video-card" href="https://www.youtube.com/watch?v=GOIhaW3cBHs" target="_blank" rel="noreferrer"><img src="https://i.ytimg.com/vi/GOIhaW3cBHs/hqdefault.jpg" alt="SIMDAQ platform product video" loading="lazy"><span class="video-play">▶</span><span class="video-copy"><strong>SIMDAQ Platform — Learn to trade like a Pro</strong><span>FinTech trading simulator: MVP, Customer Development, roadmap and gamification for a startup that attracted $5M in investment.</span></span></a>
+        <a class="video-card" href="https://www.youtube.com/watch?v=tqDMjWhKpVU" target="_blank" rel="noreferrer"><img src="https://i.ytimg.com/vi/tqDMjWhKpVU/hqdefault.jpg" alt="International FinTech startup wallet product video" loading="lazy"><span class="video-play">▶</span><span class="video-copy"><strong>International FinTech Startup — Crypto Wallet</strong><span>Mobile-first financial platform spanning wallet, payments and transactional services; $2.4M raised and $2M+ daily transaction volume.</span></span></a>
       </div>
     </div>
   </section>
@@ -580,13 +581,5 @@
 <noscript><div><img src="https://mc.yandex.ru/watch/111617582" style="position:absolute; left:-9999px;" alt="" /></div></noscript>
 <!-- /Yandex.Metrika counter -->
 
-<script>
-  document.querySelectorAll('[data-carousel]').forEach((carousel) => {
-    const track = carousel.querySelector('[data-track]');
-    const step = () => track.clientWidth + 20;
-    carousel.querySelector('[data-prev]').addEventListener('click', () => track.scrollBy({left:-step(),behavior:'smooth'}));
-    carousel.querySelector('[data-next]').addEventListener('click', () => track.scrollBy({left:step(),behavior:'smooth'}));
-  });
-</script>
 </body>
 </html>
