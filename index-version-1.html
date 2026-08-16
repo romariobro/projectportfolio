@@ -112,6 +112,83 @@
       .stack-items span { font-size:1.3rem; }
       .contact-inner { min-height:45vh; align-items:flex-start; flex-direction:column; justify-content:center; }
     }
+
+    .project-groups { padding-bottom:120px; }
+    .project-group { padding:58px 0 68px; border-top:1px solid rgba(255,255,255,.13); }
+    .project-group:first-child { border-top:0; padding-top:0; }
+    .project-group-head { display:grid; grid-template-columns:minmax(260px,.75fr) minmax(360px,1.25fr); gap:60px; align-items:start; margin-bottom:28px; }
+    .project-group-kicker { display:block; margin-bottom:10px; color:#71e6aa; font-size:.68rem; letter-spacing:.18em; text-transform:uppercase; }
+    .project-group h3 { margin:0; font-size:clamp(1.8rem,3vw,3.4rem); line-height:1; letter-spacing:-.04em; text-transform:uppercase; }
+    .project-group-head p { max-width:720px; margin:0; color:#aeb3b0; line-height:1.7; }
+    .project-strip { display:flex; gap:18px; overflow-x:auto; padding:0 0 18px; scroll-snap-type:x mandatory; scrollbar-width:thin; scrollbar-color:#727874 #171918; }
+    .case-card { flex:0 0 min(76vw,760px); overflow:hidden; border:1px solid rgba(255,255,255,.14); background:#0d100e; scroll-snap-align:start; }
+    .case-media { position:relative; aspect-ratio:16/9; overflow:hidden; margin:0; background:#111; }
+    .case-media img { width:100%; height:100%; display:block; object-fit:cover; }
+    .case-card.is-proof .case-media img { object-fit:contain; background:#f4f5f4; }
+    .case-copy { padding:24px 26px 26px; }
+    .case-tag { color:#71e6aa; font-size:.66rem; letter-spacing:.16em; text-transform:uppercase; }
+    .case-copy h4 { margin:9px 0 10px; font-size:clamp(1.25rem,2vw,2rem); line-height:1.05; }
+    .case-copy p { min-height:3.4em; margin:0; color:#aeb3b0; font-size:.86rem; line-height:1.65; }
+    .case-metrics { display:flex; flex-wrap:wrap; gap:7px; margin-top:18px; }
+    .case-metrics span { padding:7px 9px; border:1px solid #353b37; color:#e6e9e7; font-size:.66rem; }
+    .video-card { position:relative; flex:0 0 min(70vw,620px); aspect-ratio:16/9; overflow:hidden; border:1px solid rgba(255,255,255,.14); background:#111; color:#fff; text-decoration:none; scroll-snap-align:start; }
+    .video-card img { width:100%; height:100%; display:block; object-fit:cover; filter:brightness(.68); transition:filter .2s,transform .2s; }
+    .video-card:hover img { filter:brightness(.48); transform:scale(1.015); }
+    .video-play { position:absolute; left:24px; top:22px; display:grid; width:52px; height:52px; place-items:center; border:1px solid rgba(255,255,255,.7); border-radius:50%; background:rgba(0,0,0,.42); font-size:1.1rem; }
+    .video-copy { position:absolute; inset:auto 0 0; padding:80px 24px 22px; background:linear-gradient(transparent,rgba(0,0,0,.94)); }
+    .video-copy strong { display:block; font-size:1.1rem; }
+    .video-copy span { display:block; max-width:520px; margin-top:7px; color:#c2c7c4; font-size:.76rem; line-height:1.5; }
+    @media (max-width:800px) {
+      .project-groups { padding-bottom:74px; }
+      .project-group { padding:44px 0 48px; }
+      .project-group-head { grid-template-columns:1fr; gap:20px; }
+      .case-card,.video-card { flex-basis:calc(100vw - 34px); }
+      .case-copy { padding:20px; }
+      .case-copy p { min-height:0; }
+    }
+
+    .banner-shell { padding-bottom:72px; }
+    .banner-toolbar { display:flex; justify-content:space-between; align-items:end; gap:32px; margin-bottom:24px; }
+    .banner-toolbar h3,.video-section-title { margin:8px 0 0; font-size:clamp(1.7rem,3.2vw,3.5rem); line-height:1; letter-spacing:-.04em; text-transform:uppercase; }
+    .banner-controls { display:flex; gap:9px; }
+    .banner-control { width:48px; height:48px; border:1px solid rgba(255,255,255,.42); border-radius:50%; background:transparent; color:#fff; cursor:pointer; font-size:1.15rem; transition:background .2s,color .2s; }
+    .banner-control:hover { background:#fff; color:#050607; }
+    .banner-track { display:flex; gap:20px; overflow-x:auto; padding:0 0 18px; scroll-snap-type:x mandatory; scroll-behavior:smooth; scrollbar-width:thin; scrollbar-color:#737975 #171918; }
+    .banner-card { position:relative; flex:0 0 100%; min-height:min(72vh,720px); overflow:hidden; border:1px solid rgba(255,255,255,.16); background:#101311; scroll-snap-align:start; scroll-snap-stop:always; }
+    .banner-card img { width:100%; height:100%; min-height:min(72vh,720px); display:block; object-fit:cover; }
+    .banner-card.is-proof img { object-fit:contain; background:#f5f6f5; }
+    .banner-overlay { position:absolute; inset:0; display:flex; flex-direction:column; justify-content:flex-end; padding:clamp(26px,5vw,68px); background:linear-gradient(90deg,rgba(0,0,0,.94) 0%,rgba(0,0,0,.55) 48%,rgba(0,0,0,.08) 78%),linear-gradient(0deg,rgba(0,0,0,.84),transparent 62%); }
+    .banner-index { color:#71e6aa; font-size:.68rem; letter-spacing:.18em; text-transform:uppercase; }
+    .banner-overlay h4 { max-width:760px; margin:12px 0 15px; font-size:clamp(2rem,5vw,5.2rem); line-height:.92; letter-spacing:-.055em; text-transform:uppercase; }
+    .banner-overlay p { max-width:650px; margin:0; color:#d0d4d1; font-size:clamp(.86rem,1.25vw,1.08rem); line-height:1.65; }
+    .banner-metrics { display:flex; flex-wrap:wrap; gap:8px; margin-top:22px; }
+    .banner-metrics span { padding:8px 11px; border:1px solid rgba(255,255,255,.38); background:rgba(0,0,0,.32); font-size:.68rem; }
+    .video-cases { padding:76px 0 120px; border-top:1px solid rgba(255,255,255,.13); }
+    .video-section-head { display:flex; justify-content:space-between; align-items:end; gap:40px; margin-bottom:30px; }
+    .video-section-head p { max-width:520px; margin:0; color:#969c98; line-height:1.65; }
+    .video-track { display:flex; gap:18px; overflow-x:auto; padding-bottom:18px; scroll-snap-type:x mandatory; scrollbar-width:thin; scrollbar-color:#727874 #171918; }
+    .video-track .video-card { flex-basis:min(70vw,620px); }
+    @media (max-width:800px) {
+      .banner-shell { padding-bottom:50px; }
+      .banner-toolbar,.video-section-head { align-items:flex-start; flex-direction:column; }
+      .banner-controls { align-self:flex-end; }
+      .banner-card,.banner-card img { min-height:68vh; }
+      .banner-card { flex-basis:100%; }
+      .banner-overlay { padding:24px 20px; background:linear-gradient(0deg,rgba(0,0,0,.95),rgba(0,0,0,.12) 88%); }
+      .banner-overlay h4 { font-size:clamp(2rem,11vw,3.4rem); }
+      .video-cases { padding-top:58px; padding-bottom:80px; }
+      .video-track .video-card { flex-basis:100%; }
+    }
+
+    .projects-teaser { position:relative; border-top:1px solid rgba(255,255,255,.12); background:#050607; padding:110px 0 0; }
+    .projects-entry { position:relative; min-height:min(68vh,680px); display:flex; align-items:flex-end; overflow:hidden; margin-top:48px; border:1px solid rgba(255,255,255,.16); color:#fff; text-decoration:none; background:#111; }
+    .projects-entry img { position:absolute; inset:0; width:100%; height:100%; object-fit:cover; filter:brightness(.54); transition:transform .35s,filter .35s; }
+    .projects-entry:hover img { transform:scale(1.018); filter:brightness(.4); }
+    .projects-entry-copy { position:relative; z-index:1; width:100%; padding:clamp(28px,6vw,78px); background:linear-gradient(0deg,rgba(0,0,0,.92),transparent 78%); }
+    .projects-entry-copy h3 { max-width:900px; margin:14px 0 18px; font-size:clamp(2.4rem,6vw,6.8rem); line-height:.9; letter-spacing:-.06em; text-transform:uppercase; }
+    .projects-entry-copy p { max-width:720px; margin:0; color:#d0d4d1; font-size:clamp(.92rem,1.4vw,1.15rem); line-height:1.7; }
+    .projects-entry-link { display:inline-flex; margin-top:28px; padding:13px 17px; border:1px solid rgba(255,255,255,.7); font-size:.7rem; letter-spacing:.15em; text-transform:uppercase; }
+    @media(max-width:800px){.projects-teaser{padding:76px 0 0}.projects-entry{min-height:62vh}.projects-entry-copy{padding:26px 20px}.projects-entry-copy h3{max-width:310px;font-size:clamp(1.75rem,8.5vw,2.6rem);line-height:.96}}
   </style>
 </head>
 <body>
@@ -126,7 +203,7 @@
         <a href="#about">About</a>
         <a href="#stack">Stack</a>
         <a href="#contact">Contact</a>
-        <a class="cv-link" href="Mironichev Roman Alexandrovich CV Delivery Manager Senior Project Head Of PMO.pdf" target="_blank" rel="noreferrer">CV ↓</a>
+        <a class="cv-link" href="Roman_Mironichev_One_Page_CV.pdf" target="_blank" rel="noreferrer">CV ↓</a>
       </nav>
     </header>
     <main class="hero shell" id="overview">
@@ -137,7 +214,7 @@
         <div class="actions">
           <a class="btn btn-primary" href="mailto:tocryptopostman@gmail.com">Contact me&nbsp; →</a>
           <a class="btn" href="#projects">View portfolio</a>
-          <a class="btn" href="Mironichev Roman Alexandrovich CV Delivery Manager Senior Project Head Of PMO.pdf" download>Download CV&nbsp; ↓</a>
+          <a class="btn" href="Roman_Mironichev_One_Page_CV.pdf" download>Download CV&nbsp; ↓</a>
         </div>
       </section>
     </main>
@@ -146,55 +223,21 @@
     <div class="about-grid shell">
       <div>
         <p class="section-mark">About / Approach</p>
-        <h2 class="section-heading">Structure.<br>Alignment.<br>Delivery.</h2>
       </div>
       <div class="about-copy">
-        <p>I am most effective in remote environments where there is a need to align stakeholders, structure execution, and move a product from fragmented effort to predictable delivery.</p>
-        <p>Strong in cross-functional coordination between business and marketing, product and engineering. Comfortable with startup ambiguity and enterprise-scale governance. I can set up PMO dashboards, backlog discipline, release rhythm and delivery visibility.</p>
         <p>I work at the intersection of product execution, technical delivery and business structure. This page is designed as a practical portfolio for TPM, CMO and Head of PMO roles.</p>
+        <p>Strong in cross-functional coordination between business and marketing, product and engineering. Comfortable with startup ambiguity and enterprise-scale governance. I can set up PMO dashboards, backlog discipline, release rhythm and delivery visibility.</p>
+        <p>I am most effective in remote environments where there is a need to align stakeholders, structure execution, and move a product from fragmented effort to predictable delivery.</p>
       </div>
     </div>
   </section>
-  <section class="projects-section" id="projects" aria-labelledby="projects-title">
-    <div class="section-head shell">
-      <div><h2 class="section-heading" id="projects-title">Projects</h2></div>
-      <p class="section-note">A visual archive of product delivery, PMO systems, fintech, games and growth work.</p>
-    </div>
-    <div class="project-gallery" aria-label="Project gallery">
-      <figure class="project-card"><img src="gallery/project-01.webp" alt="ClickUp project delivery dashboard" loading="lazy"><figcaption><strong>PMO Dashboard</strong><span>Delivery visibility</span></figcaption></figure>
-      <figure class="project-card"><img src="gallery/project-02.webp" alt="Neobank website project" loading="lazy"><figcaption><strong>Neobank</strong><span>Fintech product</span></figcaption></figure>
-      <figure class="project-card"><img src="gallery/project-03.webp" alt="Game development project" loading="lazy"><figcaption><strong>Game Production</strong><span>Product delivery</span></figcaption></figure>
-      <figure class="project-card"><img src="gallery/project-04.webp" alt="Project Gantt plan" loading="lazy"><figcaption><strong>Delivery Planning</strong><span>PMO systems</span></figcaption></figure>
-      <figure class="project-card"><img src="gallery/project-05.webp" alt="Google SEO performance report" loading="lazy"><figcaption><strong>SEO Growth</strong><span>Performance</span></figcaption></figure>
-      <figure class="project-card"><img src="gallery/project-06.webp" alt="Mobile game project screen" loading="lazy"><figcaption><strong>Mobile Games</strong><span>Portfolio delivery</span></figcaption></figure>
-      <figure class="project-card"><img src="gallery/project-07.webp" alt="Advertising grant campaign results" loading="lazy"><figcaption><strong>Campaign Systems</strong><span>Marketing</span></figcaption></figure>
-      <figure class="project-card"><img src="gallery/project-08.webp" alt="Product roadmap template" loading="lazy"><figcaption><strong>Product Roadmap</strong><span>Execution rhythm</span></figcaption></figure>
-      <figure class="project-card"><img src="gallery/project-09.webp" alt="Digital product interface" loading="lazy"><figcaption><strong>Digital Product</strong><span>Interface</span></figcaption></figure>
-      <figure class="project-card"><img src="gallery/project-10.webp" alt="Product project screen" loading="lazy"><figcaption><strong>Product Screen</strong><span>Delivery archive</span></figcaption></figure>
-      <figure class="project-card"><img src="gallery/project-11.webp" alt="Web product screen" loading="lazy"><figcaption><strong>Web Product</strong><span>Interface</span></figcaption></figure>
-      <figure class="project-card"><img src="gallery/project-12.webp" alt="Digital campaign banner" loading="lazy"><figcaption><strong>Digital Campaign</strong><span>Creative</span></figcaption></figure>
-      <figure class="project-card"><img src="gallery/project-13.webp" alt="Additional ClickUp dashboard" loading="lazy"><figcaption><strong>PMO Dashboard II</strong><span>Operations</span></figcaption></figure>
-      <figure class="project-card"><img src="gallery/project-14.webp" alt="Project documentation screen" loading="lazy"><figcaption><strong>Documentation</strong><span>Process</span></figcaption></figure>
-      <figure class="project-card"><img src="gallery/project-15.webp" alt="Project workflow documentation" loading="lazy"><figcaption><strong>Workflow</strong><span>Documentation</span></figcaption></figure>
-      <figure class="project-card"><img src="gallery/project-16.webp" alt="Project management document" loading="lazy"><figcaption><strong>Project System</strong><span>Documentation</span></figcaption></figure>
-      <figure class="project-card"><img src="gallery/project-17.webp" alt="Product design frame" loading="lazy"><figcaption><strong>Product Design</strong><span>Prototype</span></figcaption></figure>
-      <figure class="project-card"><img src="gallery/project-18.webp" alt="Game project screen two" loading="lazy"><figcaption><strong>Game Portfolio 02</strong><span>Production</span></figcaption></figure>
-      <figure class="project-card"><img src="gallery/project-19.webp" alt="Game project screen four" loading="lazy"><figcaption><strong>Game Portfolio 04</strong><span>Production</span></figcaption></figure>
-      <figure class="project-card"><img src="gallery/project-20.webp" alt="Game project screen five" loading="lazy"><figcaption><strong>Game Portfolio 05</strong><span>Production</span></figcaption></figure>
-      <figure class="project-card"><img src="gallery/project-21.webp" alt="Game project screen six" loading="lazy"><figcaption><strong>Game Portfolio 06</strong><span>Production</span></figcaption></figure>
-      <figure class="project-card"><img src="gallery/project-22.webp" alt="Game project screen seven" loading="lazy"><figcaption><strong>Game Portfolio 07</strong><span>Production</span></figcaption></figure>
-      <figure class="project-card"><img src="gallery/project-23.webp" alt="Product delivery media" loading="lazy"><figcaption><strong>Delivery Case</strong><span>Archive</span></figcaption></figure>
-      <figure class="project-card"><img src="gallery/project-24.webp" alt="Microsoft Office project screen" loading="lazy"><figcaption><strong>Operations</strong><span>Workspace</span></figcaption></figure>
-      <figure class="project-card"><img src="gallery/project-25.webp" alt="Fintech website analytics" loading="lazy"><figcaption><strong>Fintech Analytics</strong><span>Yandex Metrica</span></figcaption></figure>
-      <figure class="project-card"><img src="gallery/project-26.webp" alt="Stimulus website analytics" loading="lazy"><figcaption><strong>Growth Analytics</strong><span>Traffic</span></figcaption></figure>
-      <figure class="project-card"><img src="gallery/project-27.webp" alt="SEO keyword performance" loading="lazy"><figcaption><strong>SEO Keywords</strong><span>Search growth</span></figcaption></figure>
-      <figure class="project-card"><img src="gallery/project-28.webp" alt="SEO positions report" loading="lazy"><figcaption><strong>Search Positions</strong><span>Yandex / Google</span></figcaption></figure>
-      <figure class="project-card"><img src="gallery/project-29.webp" alt="Additional SEO performance report" loading="lazy"><figcaption><strong>SEO Performance II</strong><span>Growth</span></figcaption></figure>
-      <figure class="project-card"><img src="gallery/project-30.webp" alt="Crypto SEO report" loading="lazy"><figcaption><strong>Crypto SEO</strong><span>International growth</span></figcaption></figure>
-      <figure class="project-card"><img src="gallery/project-31.webp" alt="Russian crypto SEO report" loading="lazy"><figcaption><strong>Crypto SEO RU</strong><span>Regional growth</span></figcaption></figure>
-      <figure class="project-card"><img src="gallery/project-32.webp" alt="SEO ranking result" loading="lazy"><figcaption><strong>SEO to Top II</strong><span>Ranking</span></figcaption></figure>
-      <figure class="project-card"><img src="gallery/project-33.webp" alt="SEO top ranking result" loading="lazy"><figcaption><strong>SEO to Top</strong><span>Ranking</span></figcaption></figure>
-      <figure class="project-card"><img src="gallery/project-34.webp" alt="Project portfolio media" loading="lazy"><figcaption><strong>Project Archive</strong><span>Media</span></figcaption></figure>
+  <section class="projects-teaser" id="projects" aria-labelledby="projects-title">
+    <div class="shell">
+      <h2 class="section-heading" id="projects-title">Projects</h2>
+      <a class="projects-entry" href="projects.html">
+        <img src="projects-media/transport-payments.webp" alt="Open the complete project portfolio" loading="lazy">
+        <span class="projects-entry-copy"><span class="project-group-kicker">11 visual cases · 5 video cases</span><h3>Explore the full project portfolio</h3><p>Product, FinTech, Product Operations, Growth, SEO and high-load payment infrastructure — grouped on a dedicated page.</p><span class="projects-entry-link">View all projects →</span></span>
+      </a>
     </div>
   </section>
   <section class="stack-section" id="stack" aria-labelledby="stack-title">
@@ -216,6 +259,8 @@
     <div class="contact-inner shell">
       <div><h2 class="section-heading">Let’s work<br>together.</h2></div>
       <div class="contact-links">
+        <a class="contact-link" href="cv-en.html">CV English ↗</a>
+        <a class="contact-link" href="cv-ru.html">CV Русский ↗</a>
         <a class="contact-link" href="mailto:tocryptopostman@gmail.com">Email ↗</a>
         <a class="contact-link" href="https://t.me/romwag" target="_blank" rel="noreferrer">Telegram ↗</a>
         <a class="contact-link" href="https://linkedin.com/pub/roman-mironichev/14/636/69b/" target="_blank" rel="noreferrer">LinkedIn ↗</a>
@@ -247,5 +292,24 @@
 </script>
 <noscript><div><img src="https://mc.yandex.ru/watch/111617582" style="position:absolute; left:-9999px;" alt="" /></div></noscript>
 <!-- /Yandex.Metrika counter -->
+
+<script>
+  document.querySelectorAll('[data-carousel]').forEach((carousel) => {
+    const track = carousel.querySelector('[data-track]');
+    const previous = carousel.querySelector('[data-prev]');
+    const next = carousel.querySelector('[data-next]');
+    const step = () => track.clientWidth + 20;
+    const move = (direction) => track.scrollBy({left: direction * step(), behavior: 'smooth'});
+    previous.addEventListener('click', () => move(-1));
+    next.addEventListener('click', () => move(1));
+    if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+      let timer = setInterval(() => {
+        const atEnd = track.scrollLeft + track.clientWidth >= track.scrollWidth - 8;
+        track.scrollTo({left: atEnd ? 0 : track.scrollLeft + step(), behavior: 'smooth'});
+      }, 6500);
+      carousel.addEventListener('mouseenter', () => clearInterval(timer), {once:true});
+    }
+  });
+</script>
 </body>
 </html>
