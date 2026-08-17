@@ -442,104 +442,6 @@
       .video-cases { padding-top:58px; padding-bottom:80px; }
       .video-track .video-card { flex-basis:100%; }
     }
-
-    /* Variant 1: editorial project feed */
-    .banner-track { gap:24px; }
-    .case-divider {
-      width:100vw;
-      height:3px;
-      margin:26px 0 26px calc(50% - 50vw);
-      background:#71e6aa;
-      box-shadow:0 0 12px rgba(113,230,170,.34);
-    }
-    .case-divider::before,
-    .case-divider::after,
-    .case-divider span { display:none; }
-    .banner-card {
-      display:grid;
-      grid-template-columns:1fr;
-      min-height:0;
-      background:#0d100e;
-    }
-    .banner-card > img {
-      grid-column:1;
-      grid-row:1;
-      width:100%;
-      height:auto;
-      min-height:0;
-      object-fit:unset;
-    }
-    .banner-card.is-proof > img { object-fit:unset; background:#f5f6f5; }
-    .banner-overlay {
-      position:static;
-      grid-column:1;
-      grid-row:2;
-      justify-content:center;
-      padding:clamp(30px,4vw,58px);
-      background:#0d100e;
-    }
-    .banner-overlay h4 {
-      margin:14px 0 18px;
-      font-size:clamp(1.8rem,3.2vw,3.5rem);
-      line-height:.98;
-    }
-    .banner-overlay p { color:#c8ceca; }
-    .banner-metrics span { background:transparent; }
-    .video-track { gap:24px; }
-    .video-track .video-card {
-      display:grid;
-      grid-template-columns:1fr;
-      width:100%;
-      min-height:0;
-      aspect-ratio:auto;
-      background:#0d100e;
-    }
-    .video-visual {
-      position:relative;
-      min-height:0;
-      aspect-ratio:16/9;
-      overflow:hidden;
-      padding:0;
-      border:0;
-      background:#111;
-      color:#fff;
-      cursor:pointer;
-    }
-    .video-card img,
-    .video-card:hover img {
-      width:100%;
-      height:100%;
-      object-fit:cover;
-      filter:none;
-      transform:none;
-    }
-    .video-card .video-play { pointer-events:none; }
-    .video-copy {
-      position:static;
-      display:flex;
-      flex-direction:column;
-      justify-content:center;
-      padding:clamp(30px,4vw,52px);
-      background:#0d100e;
-    }
-    .video-copy strong { font-size:clamp(1.35rem,2.4vw,2.35rem); line-height:1.05; }
-    .video-copy span { margin-top:14px; color:#c2c7c4; font-size:.86rem; }
-    .video-visual iframe { width:100%; height:100%; border:0; }
-
-    @media (max-width:800px) {
-      .banner-card,
-      .video-track .video-card { grid-template-columns:1fr; }
-      .banner-card > img,
-      .banner-card .banner-overlay {
-        grid-column:1;
-        grid-row:auto;
-      }
-      .banner-card > img { min-height:0; aspect-ratio:16/9; }
-      .banner-overlay { padding:26px 20px 30px; }
-      .banner-overlay h4 { font-size:clamp(1.8rem,9vw,2.8rem); }
-      .video-visual { min-height:0; aspect-ratio:16/9; }
-      .video-copy { padding:25px 20px 30px; }
-    }
   </style>
 </head>
 <body>
@@ -548,13 +450,13 @@
   <header class="portfolio-head"><div class="container portfolio-head-inner"><a class="portfolio-brand" href="index.html">PERSONAL WEBSITE</a><nav class="portfolio-menu" aria-label="Main navigation"><a href="index.html#overview">Overview</a><a aria-current="page" href="projects.html">Projects</a><a href="experience.html">Experience</a><a href="media/">Media</a><a href="index.html#about">About</a><a href="index.html#stack">Stack</a><a href="index.html#contact">Contact</a><a class="portfolio-cv" href="Roman_Mironichev_One_Page_CV.pdf" target="_blank" rel="noreferrer">CV ↓</a></nav></div></header>
 
   <!-- ─── Hero ────────────────────────────────────────────────────────────── -->
-  <section class="portfolio-hero"><div class="container"><div class="pill">Selected work / Full portfolio</div><h1>Projects</h1><p>Product, FinTech, Product Operations, Growth, SEO and high-load payments. Eleven visual cases followed by seven public video cases.</p></div></section>
+  <section class="portfolio-hero"><div class="container"><div class="pill">Selected work / Full portfolio</div><h1>Projects</h1><p>Product, FinTech, Product Operations, Growth, SEO and high-load payments. Eleven visual cases followed by five public video cases.</p></div></section>
 
   <main>
   <section class="projects-section" id="projects" aria-labelledby="projects-title">
     <div class="section-head shell">
-      <div><h2 class="section-heading" id="projects-title">Case Studies</h2></div>
-      <p class="section-note">Eleven selected cases in a clear editorial gallery, followed by seven playable video cases.</p>
+      <div><p class="section-mark">Selected work / Product evidence</p><h2 class="section-heading" id="projects-title">Case Studies</h2></div>
+      <p class="section-note">Eleven selected cases in a vertical project gallery, followed by seven video cases.</p>
     </div>
     <div class="banner-shell shell">
       <div class="banner-toolbar">
@@ -562,25 +464,15 @@
       </div>
       <div class="banner-track" aria-label="Selected project gallery">
         <article class="banner-card"><img src="projects-media/transport-payments.webp" alt="Transportation card payment system" loading="eager"><div class="banner-overlay"><span class="banner-index">01 / Payments &amp; Infrastructure</span><h4>Transportation Payment Processing</h4><p>High-load payment platform delivered across Product, Engineering, QA, Architecture, DevOps and Support.</p><div class="banner-metrics"><span>100M+ transactions/day</span><span>40 regions</span><span>40+ core team</span><span>14 releases</span><span>8 features</span></div></div></article>
-        <div class="case-divider" aria-hidden="true"><span></span></div>
         <article class="banner-card"><img src="projects-media/chatex-cryptobank.webp" alt="Mobile-first financial platform"><div class="banner-overlay"><span class="banner-index">02 / International FinTech</span><h4>Wallet, payments and transactional services</h4><p>Product, Marketing, Analytics and Support operations connected around acquisition, retention and major releases.</p><div class="banner-metrics"><span>$2.4M raised</span><span>$2M+ daily volume</span><span>30K → 300K users</span><span>10× MAU</span></div></div></article>
-        <div class="case-divider" aria-hidden="true"><span></span></div>
         <article class="banner-card"><img src="projects-media/fintech-cryptobank-dark.webp" alt="Financial platform web and mobile product"><div class="banner-overlay"><span class="banner-index">03 / Product &amp; Growth Operations</span><h4>FinTech product system</h4><p>Web, mobile and analytics managed as one operating system for product delivery and organic acquisition.</p><div class="banner-metrics"><span>4× organic traffic</span><span>400+ screens</span><span>70 scenarios</span><span>2,000+ test cases</span></div></div></article>
-        <div class="case-divider" aria-hidden="true"><span></span></div>
         <article class="banner-card"><img src="projects-media/fintech-wallet-mobile.webp" alt="Mobile wallet experience"><div class="banner-overlay"><span class="banner-index">04 / Mobile-first FinTech</span><h4>Wallet experience</h4><p>Customer journey spanning wallet, payments and transactional services across mobile and web.</p><div class="banner-metrics"><span>4.6 rating</span><span>500+ reviews</span><span>Acquisition</span><span>Retention</span></div></div></article>
-        <div class="case-divider" aria-hidden="true"><span></span></div>
         <article class="banner-card"><img src="projects-media/simdaq-dashboard.webp" alt="SIMDAQ trading simulator dashboard"><div class="banner-overlay"><span class="banner-index">05 / SIMDAQ</span><h4>FinTech trading simulator</h4><p>MVP, Customer Development, roadmap and gamification for a platform based on historical market data.</p><div class="banner-metrics"><span>$5M raised</span><span>15+ specialists</span><span>30+ screens</span></div></div></article>
-        <div class="case-divider" aria-hidden="true"><span></span></div>
         <article class="banner-card"><img src="projects-media/simdaq-simulation.webp" alt="SIMDAQ historical market simulation"><div class="banner-overlay"><span class="banner-index">06 / SIMDAQ Product</span><h4>Historical market simulation</h4><p>Interactive trading experience combining financial data, learning mechanics and product gamification.</p><div class="banner-metrics"><span>MVP</span><span>Customer Development</span><span>International launch</span></div></div></article>
-        <div class="case-divider" aria-hidden="true"><span></span></div>
         <article class="banner-card"><img src="projects-media/simdaq-statistics.webp" alt="SIMDAQ statistics and performance"><div class="banner-overlay"><span class="banner-index">07 / SIMDAQ Analytics</span><h4>Sessions and performance</h4><p>Product interface for simulation history, performance analysis and repeat learning cycles.</p><div class="banner-metrics"><span>Product Analytics</span><span>Gamification</span><span>FinTech</span></div></div></article>
-        <div class="case-divider" aria-hidden="true"><span></span></div>
         <article class="banner-card"><img src="projects-media/delivery-dashboard.webp" alt="Product delivery dashboard"><div class="banner-overlay"><span class="banner-index">08 / REDRIFT Product Operations</span><h4>Portfolio delivery visibility</h4><p>Dashboards connected roadmaps, dependencies, team load, production bugs and sprint execution.</p><div class="banner-metrics"><span>150+ organization</span><span>10+ products</span><span>10+ managers</span></div></div></article>
-        <div class="case-divider" aria-hidden="true"><span></span></div>
         <article class="banner-card"><img src="projects-media/game-simulator.webp" alt="International digital product portfolio"><div class="banner-overlay"><span class="banner-index">09 / International Portfolio</span><h4>Idea → MVP → launch → growth</h4><p>Cross-functional delivery across Product, Engineering, Design, QA, Analytics, Marketing and Operations.</p><div class="banner-metrics"><span>8–10 month launches</span><span>Web &amp; mobile</span><span>LiveOps</span></div></div></article>
-        <div class="case-divider" aria-hidden="true"><span></span></div>
         <article class="banner-card is-proof"><img src="projects-media/seo-growth-300.webp" alt="SEO traffic growth of 300 percent"><div class="banner-overlay"><span class="banner-index">10 / Growth Operations</span><h4>Organic acquisition growth</h4><p>Search acquisition connected to content, technical optimization, analytics and conversion work.</p><div class="banner-metrics"><span>+300% case</span><span>SEO</span><span>Analytics</span></div></div></article>
-        <div class="case-divider" aria-hidden="true"><span></span></div>
         <article class="banner-card is-proof"><img src="projects-media/seo-search-growth.webp" alt="Search traffic growth across Google and Yandex"><div class="banner-overlay"><span class="banner-index">11 / SEO Portfolio</span><h4>Multi-engine search growth</h4><p>Growth across Google and Yandex through site updates, content, technical optimization and links.</p><div class="banner-metrics"><span>100+ SEO projects</span><span>Google</span><span>Yandex</span></div></div></article>
       </div>
     </div>
@@ -588,19 +480,13 @@
     <div class="video-cases shell" aria-labelledby="video-cases-title">
       <div class="video-section-head"><div><span class="project-group-kicker">Video portfolio</span><h3 class="video-section-title" id="video-cases-title">Video Cases</h3></div><p>Public product demos and the SAMOLET marketing transformation context.</p></div>
       <div class="video-track">
-        <article class="video-card" data-video-id="FszsP9AyDxQ"><button class="video-visual" type="button" aria-label="Play video"><img src="https://i.ytimg.com/vi/FszsP9AyDxQ/hqdefault.jpg" alt="SAMOLET commercial" loading="lazy"><span class="video-play">▶</span></button><div class="video-copy"><strong>SAMOLET — Apartments without adventures</strong><span>Marketing and commercial transformation connected to P&amp;L, customer journey and business impact.</span></div></article>
-        <div class="case-divider" aria-hidden="true"><span></span></div>
-        <article class="video-card" data-video-id="cqIJiBtJeJY"><button class="video-visual" type="button" aria-label="Play video"><img src="https://i.ytimg.com/vi/cqIJiBtJeJY/hqdefault.jpg" alt="Cards of Eternity product video" loading="lazy"><span class="video-play">▶</span></button><div class="video-copy"><strong>COE — Cards of Eternity</strong><span>International product portfolio delivery across Product, Engineering, Design, QA and Marketing.</span></div></article>
-        <div class="case-divider" aria-hidden="true"><span></span></div>
-        <article class="video-card" data-video-id="nvs7tMlez0s"><button class="video-visual" type="button" aria-label="Play video"><img src="https://i.ytimg.com/vi/nvs7tMlez0s/hqdefault.jpg" alt="Puzzle Royal product video" loading="lazy"><span class="video-play">▶</span></button><div class="video-copy"><strong>Puzzle Royal</strong><span>Product Delivery from roadmap and MVP through international launch and LiveOps.</span></div></article>
-        <div class="case-divider" aria-hidden="true"><span></span></div>
-        <article class="video-card" data-video-id="2jdFHCBersM"><button class="video-visual" type="button" aria-label="Play video"><img src="https://i.ytimg.com/vi/2jdFHCBersM/hqdefault.jpg" alt="Berserk The Cataclysm product video" loading="lazy"><span class="video-play">▶</span></button><div class="video-copy"><strong>Berserk: The Cataclysm</strong><span>Portfolio Operations, resource management, dependencies and release coordination.</span></div></article>
-        <div class="case-divider" aria-hidden="true"><span></span></div>
-        <article class="video-card" data-video-id="3GOrsbXuk2I"><button class="video-visual" type="button" aria-label="Play video"><img src="https://i.ytimg.com/vi/3GOrsbXuk2I/hqdefault.jpg" alt="Slots product video" loading="lazy"><span class="video-play">▶</span></button><div class="video-copy"><strong>Slots — Product Demo</strong><span>International product initiative managed within a 150+ product organization.</span></div></article>
-        <div class="case-divider" aria-hidden="true"><span></span></div>
-        <article class="video-card" data-video-id="GOIhaW3cBHs"><button class="video-visual" type="button" aria-label="Play video"><img src="https://i.ytimg.com/vi/GOIhaW3cBHs/hqdefault.jpg" alt="SIMDAQ platform product video" loading="lazy"><span class="video-play">▶</span></button><div class="video-copy"><strong>SIMDAQ Platform — Learn to trade like a Pro</strong><span>FinTech trading simulator: MVP, Customer Development, roadmap and gamification for a startup that attracted $5M in investment.</span></div></article>
-        <div class="case-divider" aria-hidden="true"><span></span></div>
-        <article class="video-card" data-video-id="tqDMjWhKpVU"><button class="video-visual" type="button" aria-label="Play video"><img src="https://i.ytimg.com/vi/tqDMjWhKpVU/hqdefault.jpg" alt="International FinTech startup wallet product video" loading="lazy"><span class="video-play">▶</span></button><div class="video-copy"><strong>International FinTech Startup — Crypto Wallet</strong><span>Mobile-first financial platform spanning wallet, payments and transactional services; $2.4M raised and $2M+ daily transaction volume.</span></div></article>
+        <a class="video-card" href="https://www.youtube.com/watch?v=FszsP9AyDxQ" target="_blank" rel="noreferrer"><img src="https://i.ytimg.com/vi/FszsP9AyDxQ/hqdefault.jpg" alt="SAMOLET commercial" loading="lazy"><span class="video-play">▶</span><span class="video-copy"><strong>SAMOLET — Apartments without adventures</strong><span>Marketing and commercial transformation connected to P&amp;L, customer journey and business impact.</span></span></a>
+        <a class="video-card" href="https://www.youtube.com/watch?v=cqIJiBtJeJY" target="_blank" rel="noreferrer"><img src="https://i.ytimg.com/vi/cqIJiBtJeJY/hqdefault.jpg" alt="Cards of Eternity product video" loading="lazy"><span class="video-play">▶</span><span class="video-copy"><strong>COE — Cards of Eternity</strong><span>International product portfolio delivery across Product, Engineering, Design, QA and Marketing.</span></span></a>
+        <a class="video-card" href="https://www.youtube.com/watch?v=nvs7tMlez0s" target="_blank" rel="noreferrer"><img src="https://i.ytimg.com/vi/nvs7tMlez0s/hqdefault.jpg" alt="Puzzle Royal product video" loading="lazy"><span class="video-play">▶</span><span class="video-copy"><strong>Puzzle Royal</strong><span>Product Delivery from roadmap and MVP through international launch and LiveOps.</span></span></a>
+        <a class="video-card" href="https://www.youtube.com/watch?v=2jdFHCBersM" target="_blank" rel="noreferrer"><img src="https://i.ytimg.com/vi/2jdFHCBersM/hqdefault.jpg" alt="Berserk The Cataclysm product video" loading="lazy"><span class="video-play">▶</span><span class="video-copy"><strong>Berserk: The Cataclysm</strong><span>Portfolio Operations, resource management, dependencies and release coordination.</span></span></a>
+        <a class="video-card" href="https://www.youtube.com/watch?v=3GOrsbXuk2I" target="_blank" rel="noreferrer"><img src="https://i.ytimg.com/vi/3GOrsbXuk2I/hqdefault.jpg" alt="Slots product video" loading="lazy"><span class="video-play">▶</span><span class="video-copy"><strong>Slots — Product Demo</strong><span>International product initiative managed within a 150+ product organization.</span></span></a>
+        <a class="video-card" href="https://www.youtube.com/watch?v=GOIhaW3cBHs" target="_blank" rel="noreferrer"><img src="https://i.ytimg.com/vi/GOIhaW3cBHs/hqdefault.jpg" alt="SIMDAQ platform product video" loading="lazy"><span class="video-play">▶</span><span class="video-copy"><strong>SIMDAQ Platform — Learn to trade like a Pro</strong><span>FinTech trading simulator: MVP, Customer Development, roadmap and gamification for a startup that attracted $5M in investment.</span></span></a>
+        <a class="video-card" href="https://www.youtube.com/watch?v=tqDMjWhKpVU" target="_blank" rel="noreferrer"><img src="https://i.ytimg.com/vi/tqDMjWhKpVU/hqdefault.jpg" alt="International FinTech startup wallet product video" loading="lazy"><span class="video-play">▶</span><span class="video-copy"><strong>International FinTech Startup — Crypto Wallet</strong><span>Mobile-first financial platform spanning wallet, payments and transactional services; $2.4M raised and $2M+ daily transaction volume.</span></span></a>
       </div>
     </div>
   </section>
@@ -695,19 +581,5 @@
 <noscript><div><img src="https://mc.yandex.ru/watch/111617582" style="position:absolute; left:-9999px;" alt="" /></div></noscript>
 <!-- /Yandex.Metrika counter -->
 
-
-  <script>
-    document.querySelectorAll('.video-card[data-video-id]').forEach((card) => {
-      const button = card.querySelector('.video-visual');
-      button?.addEventListener('click', () => {
-        const iframe = document.createElement('iframe');
-        iframe.src = `https://www.youtube-nocookie.com/embed/${card.dataset.videoId}?autoplay=1&rel=0`;
-        iframe.title = card.querySelector('.video-copy strong')?.textContent || 'Project video';
-        iframe.allow = 'autoplay; encrypted-media; picture-in-picture';
-        iframe.allowFullscreen = true;
-        button.replaceChildren(iframe);
-      }, { once:true });
-    });
-  </script>
 </body>
 </html>
